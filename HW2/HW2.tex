@@ -1,0 +1,197 @@
+\documentclass{article}
+
+\usepackage[tmargin=0.5in,bmargin=0.25in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{amsmath}
+\usepackage{enumitem}
+
+\title{\vspace{-5ex}MATH 341 HW 2}
+\author{Isaac Boaz}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 2}
+Prove the result (3) in “MATH341 07 Chapter 1 \#7 Some Important Results Related to
+Probability”. That is,
+\begin{align*}
+    P(A\ \cup&\ B \cup C) \\
+    = P(A) + P(B) + P(C) - P(A \cap B) -& P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
+\end{align*}
+\begin{proof}[Proof. Additive Rule]
+    \begin{align*}
+        P(A \cup B) &=\ P(A) + P(B) - P(A \cap B) \\
+        B \cap \overline{A} &=\ C \\
+        A \cap C &=\ \emptyset \\
+        P(A \cup C) &=\ P(A) + P(C) \\
+        &=\ P(A) + P(B \cap \overline{A}) \\
+        B &=\ (B \cap \overline{A}) \cup (A \cap B) \\
+        P(B) &=\ P(B \cap \overline{A}) + P(A \cap B) \\
+        P(B) - P(A \cap B) &=\ P(B \cap \overline{A}) \\
+        P(A \cup B) &=\ P(A) + P(B) - P(A \cap B)
+    \end{align*}
+    % \begin{align*}
+    %     P(A \cup B \cup C) &= P(A \cup B) + P(C) - P(A \cap B \cap C) \\
+    %     &= P(A) + P(B) - P(A \cap B) + P(C) - P(A \cap B \cap C) \\
+    %     &= P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
+    % \end{align*}
+\end{proof}
+Revisiting the original question:
+\begin{proof}
+        Let \(D = B \cup C\)
+        \begin{align*}
+            P(A \cup B \cup C) &= P(A \cup D) \\
+            P(A \cup D) &= P(A) + P(D) - P(A \cap D) \\
+            &= P(A) + P(B \cup C) - P(A \cap (B \cup C)) \\
+            P(B \cup C) &= P(B) + P(C) - P(B \cap C) \\
+            P(A \cup B \cup C) &= P(A) + (P(B) + P(C) - P(B \cap C)) - P(A \cap D) \\
+            &= P(A) + P(B) + P(C) - P(B \cap C) - P(A \cap D) \\
+            P(A \cap D) &= P(A \cap (B \cup C)) \\
+            &= P((A \cap B) \cup (A \cap C)) \\
+        \end{align*}
+        Let \(X = (A \cap B),\ Y = (A \cap C)\)
+        \begin{align*}
+            P((A \cap B) \cup (A \cap C)) &= P(X) + P(Y) - P(X \cap Y) \\
+            &= P(A \cap B) + P(A \cap C) - P((A \cap B) \cap (A \cap C)) \\
+            &= P(A \cap B) + P(A \cap C) - P(A \cap B \cap C) \\
+            P(A \cup B \cup C) \\
+            &= P(A) + P(B) + P(C) - P(B \cap C) - P(A \cap B) - P(A \cap C) + P(A \cap B \cap C) \\
+            &= P(A) + P(B) + P(C) - P(A \cap B) - P(A \cap C) - P(B \cap C) + P(A \cap B \cap C)
+        \end{align*}
+\end{proof}
+
+% \pagebreak
+
+\section*{Problem 3}
+According to the survey conducted by The List, 60\% of respondents are dog lovers and 23\% of them are cat lovers. Also, 11\% of them are not fans of either pet.
+
+\begin{enumerate}[label=\alph*)]
+    \item Assuming \(P(D) = 0.6,\ P(C) = 0.23\) \\
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        & C & \(\overline{C}\) & Total \\
+        \hline
+        D & -0.06 & 0.66 & 0.6 \\
+        \hline
+        \(\overline{D}\) & 0.29 & 0.11 & 0.4 \\
+        \hline
+        Total & 0.23 & 0.77 & 1 \\
+        \hline
+    \end{tabular} \\
+    This table does not make sense, as \(C \cap D\) is \(< 0\), which is impossible under \(0 \le P(A) \le 1\).
+    \item We assume that "dog lovers" and "cat lovers" are exclusive (i.e. \(D \cap C = \emptyset\)). \\
+    However, this assumption is incorrect.
+    \item  Assuming \(P(D) = 0.8,\ P(C) = 0.3\):\\
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        & C & \(\overline{C}\) & Total \\
+        \hline
+        D & 0.14 & 0.66 & 0.8 \\
+        \hline
+        \(\overline{D}\) & 0.16 & 0.11 & 0.2 \\
+        \hline
+        Total & 0.3 & 0.7 & 1 \\
+        \hline
+    \end{tabular} \\
+    Allos us to calculate \(P(\overline{C} \cup D)\) = 0.66. \\
+    Finally, finding respondents who love cats (and not dogs) is \(P(C \cap \overline{D}) = 0.16\)
+\end{enumerate}
+
+\pagebreak
+
+\section*{Problem 13}
+\begin{enumerate}[label=\alph*)]
+    \item Compute the probability of getting a “full house”.
+    \begin{enumerate}[label=\arabic*.]
+        \item One way of calculating this is first assigning the two pair rank. (13 ranks, only pick 1)
+        \item Then assign the suit of pair. (4 available suits, picking 2)
+        \item Assign the rank for the last 3 cards. (12 ranks, only pick 1)
+        \item Lastly, these 3 cards can be of any suit (4 available suits, picking 3)
+        \begin{equation*}
+            \begin{pmatrix}
+                13 \\
+                1
+            \end{pmatrix}
+            \begin{pmatrix}
+                4 \\
+                2
+            \end{pmatrix}
+            \cdot
+            \begin{pmatrix}
+                12 \\
+                1
+            \end{pmatrix}
+            \begin{pmatrix}
+                4 \\
+                3
+            \end{pmatrix}
+        \end{equation*}
+    \end{enumerate}
+    \begin{enumerate}[label=\arabic*.]
+        \item Alternatively, you could assign the three pair rank first (13 ranks, only pick 1)
+        \item Assigning the suits (4 available suits, picking 3)
+        \item Assign the remaining 2 cards to be a pair (12 ranks, only pick 1)
+        \item And we don't care about the suit, so pick (4 available suits, picking 2)
+        \begin{equation*}
+            \begin{pmatrix}
+                13 \\
+                1
+            \end{pmatrix}
+            \begin{pmatrix}
+                4 \\
+                3
+            \end{pmatrix}
+            \cdot
+            \begin{pmatrix}
+                12 \\
+                1
+            \end{pmatrix}
+            \begin{pmatrix}
+                4 \\
+                2
+            \end{pmatrix}
+        \end{equation*}
+    \end{enumerate}
+    Both methods predictably provide the same "ways of getting a full house" at \(3744\).
+    Finally, plugging in the total ways one can draw any 5 cards, we get:
+    \begin{equation*}
+        \frac{3744}{
+            \begin{pmatrix}
+                52 \\
+                5
+            \end{pmatrix}
+        } = \frac{3744}{2598960} = 0.00144
+    \end{equation*}
+    \item Compute the number of ways of having a pair of aces and a triple of cards of another rank.
+    \begin{enumerate}[label=\arabic*.]
+        \item The math for this is the same as the previous problem, with the removal of picking any rank (1 rank, only pick that 1)
+        \begin{equation*}
+            \begin{pmatrix}
+                4 \\
+                2
+            \end{pmatrix}
+            \cdot
+            \begin{pmatrix}
+                12 \\
+                1
+            \end{pmatrix}
+            \begin{pmatrix}
+                4 \\
+                3
+            \end{pmatrix}
+        \end{equation*}
+    \end{enumerate}
+    Giving us \(288\) ways of getting a pair of aces and a triple of cards of another rank. Doing the math:
+    \begin{equation*}
+        \frac{288}{
+            \begin{pmatrix}
+                52 \\
+                5
+            \end{pmatrix}
+        } = \frac{288}{2598960} = 0.0001108136
+        \end{equation*}
+    Shows us the probability is \(< 0.02\%\).
+\end{enumerate}
+
+\end{document}
