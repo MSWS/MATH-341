@@ -86,7 +86,7 @@ According to the survey conducted by The List, 60\% of respondents are dog lover
         Total & 0.3 & 0.7 & 1 \\
         \hline
     \end{tabular} \\
-    Allos us to calculate \(P(\overline{C} \cup D)\) = 0.66. \\
+    Allows us to calculate \(P(\overline{C} \cup D)\) = 0.66. \\
     Finally, finding respondents who love cats (and not dogs) is \(P(C \cap \overline{D}) = 0.16\)
 \end{enumerate}
 
@@ -96,10 +96,10 @@ According to the survey conducted by The List, 60\% of respondents are dog lover
 \begin{enumerate}[label=\alph*)]
     \item Compute the probability of getting a “full house”.
     \begin{enumerate}[label=\arabic*.]
-        \item One way of calculating this is first assigning the two pair rank. (13 ranks, only pick 1)
-        \item Then assign the suit of pair. (4 available suits, picking 2)
-        \item Assign the rank for the last 3 cards. (12 ranks, only pick 1)
-        \item Lastly, these 3 cards can be of any suit (4 available suits, picking 3)
+        \item One way of calculating this is first assigning the first pair's rank. (13 ranks, picking 1)
+        \item Assign the suit of the pair. (4 suits, picking 2)
+        \item Assign the rank for the last 3 cards. (12 ranks, picking 1)
+        \item Lastly, these 3 cards can be of any suit (4 suits, picking 3)
         \begin{equation*}
             \begin{pmatrix}
                 13 \\
@@ -121,10 +121,10 @@ According to the survey conducted by The List, 60\% of respondents are dog lover
         \end{equation*}
     \end{enumerate}
     \begin{enumerate}[label=\arabic*.]
-        \item Alternatively, you could assign the three pair rank first (13 ranks, only pick 1)
-        \item Assigning the suits (4 available suits, picking 3)
-        \item Assign the remaining 2 cards to be a pair (12 ranks, only pick 1)
-        \item And we don't care about the suit, so pick (4 available suits, picking 2)
+        \item Alternatively, you could assign the three-card's rank first (13 ranks, picking 1)
+        \item Assign the suits (4 suits, picking 3)
+        \item Assign the remaining pair's rank (12 ranks, picking 1)
+        \item Pick remaining suits (4 suits, picking 2)
         \begin{equation*}
             \begin{pmatrix}
                 13 \\
@@ -155,25 +155,27 @@ According to the survey conducted by The List, 60\% of respondents are dog lover
             \end{pmatrix}
         } = \frac{3744}{2598960} = 0.00144
     \end{equation*}
-    \item Compute the number of ways of having a pair of aces and a triple of cards of another rank.
-    \begin{enumerate}[label=\arabic*.]
-        \item The math for this is the same as the previous problem, with the removal of picking any rank (1 rank, only pick that 1)
-        \begin{equation*}
-            \begin{pmatrix}
-                4 \\
-                2
-            \end{pmatrix}
-            \cdot
-            \begin{pmatrix}
-                12 \\
-                1
-            \end{pmatrix}
-            \begin{pmatrix}
-                4 \\
-                3
-            \end{pmatrix}
-        \end{equation*}
-    \end{enumerate}
+    \item Compute the number of ways of having a pair of aces and a triple of cards of another rank. \\[1\baselineskip]
+    The math for this is the same as the previous problem, with the removal of picking any rank (1 rank, picking 1)
+    \begin{equation*}
+        \begin{pmatrix}
+            1 \\
+            1
+        \end{pmatrix}
+        \begin{pmatrix}
+            4 \\
+            2
+        \end{pmatrix}
+        \cdot
+        \begin{pmatrix}
+            12 \\
+            1
+        \end{pmatrix}
+        \begin{pmatrix}
+            4 \\
+            3
+        \end{pmatrix}
+    \end{equation*}
     Giving us \(288\) ways of getting a pair of aces and a triple of cards of another rank. Doing the math:
     \begin{equation*}
         \frac{288}{
