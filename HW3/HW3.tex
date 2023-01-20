@@ -1,0 +1,32 @@
+\documentclass{article}
+
+\usepackage[tmargin=0.5in,bmargin=0.25in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+\title{\vspace{-5ex}MATH 341 HW 2}
+\author{Isaac Boaz}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 4}
+Measuring effectiveness of a treatment.
+\(RR\): Relative Risk
+\(ARR\): Absolute Risk Reduction
+
+\begin{enumerate}[label=\alph*)]
+    \item \(RR = P(B \vert T) / P(B \vert \overline{T})\) \\
+    RR should be \(> 1\) if the treatment increases chances of harm, and \(< 1\) if it reduces the chances of harm.
+    This equation makes sense, as the numerator will increase 
+    \item \(ARR = P(B \vert \overline{T}) - P(B \vert T)\) \\
+    As the paper explains how \(P(B \vert \overline{T})\) 
+    \item Is it possible to have a sutation where \(RR \approx 0 \text{, and} ARR \approx 0\)?
+    \item Show that \(P(B \vert \overline{T}) = \frac{ARR}{1-RR}\) \\
+    \begin{align*}
+        \frac{ARR}{1-RR} &= \frac{P(B \vert \overline{T}) - P(B \vert T)}{1 - \lbrack \frac{P (B \vert T)}{P(B \vert \overline{T})} \rbrack} \\
+        &= \frac{P(B \vert \overline{T})}{P(B \vert \overline{T})} \cdot \frac{P(B \vert \overline{T}) - P(B \vert \overline{T})}{ 1 - \lbrack \frac{P (B \vert T)}{P (B \vert \overline{T})}}
+    \end{align*}
+\end{enumerate}
+
+\end{document}
