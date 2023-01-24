@@ -33,52 +33,34 @@ Measuring the effectiveness of treatment.
 \begin{enumerate}[label=\alph*)]
     \item \(RR = P(B \vert T) / P(B \vert \overline{T})\) \\
           RR should be \(> 1\) if the treatment increases the chances of harm, and \(< 1\) if it reduces the chances of harm.
-          In this instance, the numerator represents the number of people harmed in total, with the treatment group
+          As such, the numerator represents people that got `bad' despite being treated, and the denominator represents people that got `bad' without being treated.
     \item \(ARR = P(B \vert \overline{T}) - P(B \vert T)\) \\
-          As the paper explains how \(P(B \vert \overline{T})\)
+          The \textbf{A} in ARR stands for \textbf{A}bsolute, and as such, it is the difference between the two probabilities.
     \item Is it possible to have a sutation where \(RR \approx 0 \text{, and} ARR \approx 0\)? \\
           Consider a ``Rare disease'', where
+
+          Yes, it is possible to have a low relative risk (RR) and a high absolute risk reduction (ARR) when the baseline risk of the outcome is low, and the treatment has a large effect on reducing the risk.
+
+          Example: Consider a treatment for a rare disease that affects only 1 in 10,000 people. If the treatment is given to 1000 people with the disease, it prevents one death. Without the treatment, one death would have occurred.
+
           \begin{align*}
-              P(B \vert \overline{T}) & = 0.001                                  \\
-              P(B \vert T)            & = \text{(smaller than above)}            \\
-              ARR                     & = P(B \vert \overline{T}) - P(B \vert T)
+              RR = \frac{(1/1000)}{1/10000} = 0.1 \\
+              ARR = \frac{1}{1000} = 0.1\%
           \end{align*}
+
+          In this example, the relative risk is low (10\% reduction) but the absolute risk reduction is high (0.1\%).
+
     \item Show that \(P(B \vert \overline{T}) = \frac{ARR}{1-RR}\)
           \begin{align*}
+              \text{Let } a = P(B \vert \overline{T}) \text{ and } b = P(B \vert T) \\
               \frac{
                   ARR
               }{
                   1-RR
-              } & =
-              \frac{
-                  P(B \vert \overline{T}) - P(B \vert T)
-              }
-              {
-                  1 - \lbrack
-                  \frac{
-                      P (B \vert T)
-                  }{
-                      P(B \vert \overline{T})
-                  } \rbrack
-              }     \\
-                & =
-              \frac{
-                  P(B \vert \overline{T})
-              }
-              {
-                  P(B \vert \overline{T})
-              } \cdot
-              \frac{
-                  P(B \vert \overline{T}) - P(B \vert \overline{T})
-              }
-              {
-                  1 - \lbrack \frac{
-                      P (B \vert T)
-                  }
-                  {
-                      P (B \vert \overline{T})
-                  } \rbrack
-              }
+              } & = \frac{a - b}{ 1 - b/a}                                          \\
+                & = \frac{a}{a} \cdot \frac{a-b}{1 - b/a}                           \\
+                & = \frac{a(a-b)}{a-b}                                              \\
+                & = a =P(B \vert \overline{T})
           \end{align*}
 \end{enumerate}
 
