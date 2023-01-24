@@ -1,0 +1,131 @@
+\documentclass{article}
+
+\usepackage[tmargin=0.5in,bmargin=0.25in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+\title{\vspace{-5ex}MATH 341 HW 3}
+\author{Isaac Boaz}
+
+\begin{document}
+\maketitle
+
+\section*{Problem 4}
+Measuring the effectiveness of treatment.
+\begin{itemize}[noitemsep]
+    \item \(RR\): Relative Risk
+    \item \(ARR\): Absolute Risk Reduction
+    \item \(T\): Treatment Group \(\implies \overline{T}\): Control Group
+    \item \(B\): 'Bad Outcome'
+\end{itemize}
+
+
+\begin{enumerate}[label=\alph*)]
+    \item \(RR = P(B \vert T) / P(B \vert \overline{T})\) \\
+          RR should be \(> 1\) if the treatment increases the chances of harm, and \(< 1\) if it reduces the chances of harm.
+          In this instance, the numerator represents the number of people harmed in total, with the treatment group
+    \item \(ARR = P(B \vert \overline{T}) - P(B \vert T)\) \\
+          As the paper explains how \(P(B \vert \overline{T})\)
+    \item Is it possible to have a sutation where \(RR \approx 0 \text{, and} ARR \approx 0\)? \\
+          Consider a "Rare disease", where
+          \begin{align*}
+              P(B \vert \overline{T}) & = 0.001                                  \\
+              P(B \vert T)            & = \text{(smaller than above)}            \\
+              ARR                     & = P(B \vert \overline{T}) - P(B \vert T)
+          \end{align*}
+    \item Show that \(P(B \vert \overline{T}) = \frac{ARR}{1-RR}\)
+          \begin{align*}
+              \frac{
+                  ARR
+              }{
+                  1-RR
+              } & =
+              \frac{
+                  P(B \vert \overline{T}) - P(B \vert T)
+              }
+              {
+                  1 - \lbrack
+                  \frac{
+                      P (B \vert T)
+                  }{
+                      P(B \vert \overline{T})
+                  } \rbrack
+              }     \\
+                & =
+              \frac{
+                  P(B \vert \overline{T})
+              }
+              {
+                  P(B \vert \overline{T})
+              } \cdot
+              \frac{
+                  P(B \vert \overline{T}) - P(B \vert \overline{T})
+              }
+              {
+                  1 - \lbrack \frac{
+                      P (B \vert T)
+                  }
+                  {
+                      P (B \vert \overline{T})
+                  } \rbrack
+              }
+          \end{align*}
+\end{enumerate}
+
+\pagebreak
+
+\section*{Problem 8}
+The following website compares different algorithms for predicting Australian credit
+approval results for 517 individuals. We focus on the confusion matrix (where each number is
+divided by the total) for the logistic regression model.
+
+\begin{tabular}{|l|l|l|l|}
+    \hline
+                      & Predicted Denied & Predicted Approved & Total   \\
+    \hline
+    Actually Denied   & 249/517          & 38/517             & 287/517 \\
+    \hline
+    Actually Approved & 18/517           & 149/517            & 230/517 \\
+    \hline
+    Total             & 330/517          & 187/517            & 1       \\
+    \hline
+\end{tabular}
+
+\begin{enumerate}[label=\alph*)]
+    \item Let A denote ‘Actually Approved’ and B denote ‘Predicted Approved’. Show
+          mathematically whether or not A and B are independent \\
+          We know A and B are independent if \(P(A \cap B) = P(A) \cdot P(B)\).
+          \begin{align*}
+              P(A)            & = \frac{230}{517}                           \\
+              P(B)            & = \frac{187}{517}                           \\
+              P(A) \cdot P(B) & = \frac{230}{517} \cdot \frac{187}{517}     \\
+                              & = \frac{43010}{267289} = \frac{3910}{24299} \\
+              P(A \cap B)     & = \frac{149}{517}                           \\
+              \frac{149}{517} & \neq \frac{3910}{24299}                     \\
+          \end{align*}
+          Since this is not the case, we can conclude that \(A\) and \(B\) are not independent.
+    \item Does the result from (a) seem to indicate that the logistic regression model has some
+          ability to predict the outcome correctly? In other words, discuss what must happen if the
+          logistic regression model simply generates random predictions. \\
+          This model would not be able to accurately predict the outcome correctly, as the events are not independent.
+    \item Let \(C\) denote ‘Actually Denied’ and \(D\) denote ‘Predicted Denied’. Without doing any
+          calculation, discuss whether or not \(C\) and \(D\) are independent by referring to the result from (a)
+          and one of the results mentioned in the lecture notes. \\
+          We can rewrite these as
+          \begin{align*}
+              C & = \text{`Actually Denied'} = \overline{A}  \\
+              D & = \text{`Predicted Denied'} = \overline{B} \\
+          \end{align*}
+          Since we know that \(A\) and \(B\) are not independent, we can conclude that \(C\) and \(D\) are also not independent.
+\end{enumerate}
+
+\pagebreak
+
+\section*{Problem 11}
+\begin{align*}
+    P(D) = 0.025                    \\
+    P(C \vert\overline{N}) = 0.80   \\
+    P(\overline{C} \vert N) = 0.97\ \\
+\end{align*}
+
+\end{document}
