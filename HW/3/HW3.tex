@@ -9,8 +9,8 @@
 \author{Isaac Boaz}
 
 \begin{document}
-\tikzstyle{level 1}=[level distance=3.5cm, sibling distance=3.5cm]
-\tikzstyle{level 2}=[level distance=3.5cm, sibling distance=2cm]
+\tikzstyle{level 1}=[level distance=3.5cm, sibling distance=2.5cm]
+\tikzstyle{level 2}=[level distance=3.5cm, sibling distance=1.5cm]
 
 % Define styles for bags and leafs
 \tikzstyle{bag} = [text width=2em, text centered]
@@ -52,15 +52,15 @@ Measuring the effectiveness of treatment.
 
     \item Show that \(P(B \vert \overline{T}) = \frac{ARR}{1-RR}\)
           \begin{align*}
-              \text{Let } a = P(B \vert \overline{T}) \text{ and } b = P(B \vert T) \\
+              \text{Let } a = P(B \vert \overline{T}) & \text{ and } b = P(B \vert T)           \\
               \frac{
                   ARR
               }{
                   1-RR
-              } & = \frac{a - b}{ 1 - b/a}                                          \\
-                & = \frac{a}{a} \cdot \frac{a-b}{1 - b/a}                           \\
-                & = \frac{a(a-b)}{a-b}                                              \\
-                & = a =P(B \vert \overline{T})
+              }                                       & = \frac{a - b}{ 1 - b/a}                \\
+                                                      & = \frac{a}{a} \cdot \frac{a-b}{1 - b/a} \\
+                                                      & = \frac{a(a-b)}{a-b}                    \\
+                                                      & = a =P(B \vert \overline{T})
           \end{align*}
 \end{enumerate}
 
