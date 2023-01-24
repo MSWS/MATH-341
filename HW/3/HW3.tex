@@ -221,8 +221,8 @@ divided by the total) for the logistic regression model.
 \begin{enumerate}[label=\alph*)]
     \item What is the probability that an individual tests positive?
           \begin{align*}
-              P(\overline{N}) & = P(\overline{N} | D) + P(\overline{N} | \overline{D}) \\
-                              & = 0.8 \cdot 0.025 + 0.03 \cdot 0.975                   \\
+              P(\overline{N}) & = P(\overline{N} | D)P(D) + P(\overline{N} | \overline{D})P(\overline{D}) \\
+                              & = 0.8 \cdot 0.025 + 0.03 \cdot 0.975                                      \\
                               & = 0.04905
           \end{align*}
     \item Given an individual tests positive, what is the probability that they have the disease?
