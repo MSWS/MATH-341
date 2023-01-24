@@ -83,19 +83,82 @@ divided by the total) for the logistic regression model.
     \hline
 \end{tabular}
 
+\begin{tikzpicture}[grow=right, sloped]
+    \node[bag] {\(\cdot\)}
+    child {
+    node[bag] {\(\overline{B}\)}
+    child {
+    node[
+    end, label=right:
+    {\(\overline{A} \vert \overline{B}\)}
+    ] {}
+    edge from parent
+    node[above] {\(\frac{249}{517}\)}
+    }
+    child {
+    node[end, label=right:
+    {\(A \vert \overline{B}\)}
+    ] {}
+    edge from parent
+    node[above] {\(\frac{18}{517}\)}
+    }
+    edge from parent
+    node[above] {\(\frac{330}{517}\)}
+    }
+    child {
+    node[bag] {\(B\)}
+    child {
+    node[end, label=right:
+    {\(\overline{A} \vert B\)}] {}
+    edge from parent
+    node[above] {\(\frac{38}{517}\)}
+    }
+    child {
+    node[end, label=right:
+    {\(A \vert B\)}] {}
+    edge from parent
+    node[above] {\(\frac{149}{517}\)}
+    }
+    edge from parent
+    node[above] {\(\frac{187}{517}\)}
+    };
+\end{tikzpicture}
+
 \begin{enumerate}[label=\alph*)]
     \item Let A denote ‘Actually Approved’ and B denote ‘Predicted Approved’. Show
-          mathematically whether or not A and B are independent \\
-          We know A and B are independent if \(P(A \cap B) = P(A) \cdot P(B)\).
-          \begin{align*}
-              P(A)            & = \frac{230}{517}                           \\
-              P(B)            & = \frac{187}{517}                           \\
-              P(A) \cdot P(B) & = \frac{230}{517} \cdot \frac{187}{517}     \\
-                              & = \frac{43010}{267289} = \frac{3910}{24299} \\
-              P(A \cap B)     & = \frac{149}{517}                           \\
-              \frac{149}{517} & \neq \frac{3910}{24299}                     \\
-          \end{align*}
-          Since this is not the case, we can conclude that \(A\) and \(B\) are not independent.
+          mathematically whether or not A and B are independent
+          \begin{enumerate}[label=Method \arabic*.]
+              \item We know A and B are independent if \(P(A \cap B) = P(A) \cdot P(B)\).
+                    \begin{align*}
+                        P(A)            & = \frac{230}{517}                           \\
+                        P(B)            & = \frac{187}{517}                           \\
+                        P(A) \cdot P(B) & = \frac{230}{517} \cdot \frac{187}{517}     \\
+                                        & = \frac{43010}{267289} = \frac{3910}{24299} \\
+                        P(A \cap B)     & = \frac{149}{517}                           \\
+                        \frac{149}{517} & \neq \frac{3910}{24299}                     \\
+                    \end{align*}
+                    Since this is not the case, we can conclude that \(A\) and \(B\) are not independent.
+              \item We could also check if A is independent of B if \(P(A \vert B) = P(A)\)
+                    \begin{align*}
+                        P(A \vert B) & = \frac{149}{517} \cdot \frac{187}{517}     \\
+                                     & = \frac{27863}{267289} \approx 0.1042429729 \\
+                        P(A)         & = \frac{360}{517} \approx 0.6963249516      \\
+                        P(A \vert B) & \neq P(A)
+                    \end{align*}
+                    Since \(P(A \vert B \neq P(A))\), we know that \(A\) is not independent of \(B\).
+              \item We could also check if B is independent of A if \(P(B \vert A) = P(B)\)
+                    \begin{align*}
+                        P(B \vert A)           & = \frac{P(B \cap A)}{P(B)}                             \\
+                                               & =\frac{P(A \cap B)}{P(A)}                              \\
+                                               & = \frac{P(A \vert B) \cdot P(B)}{P(A)}                 \\
+                                               & \approx \frac{0.10424 \cdot 0.361702127}{0.6963249516} \\
+                                               & \approx 0.05414688879                                  \\
+                        P(B) = \frac{187}{517} & \approx   0.361702127                                  \\
+                        P(B \vert A)           & \neq P(B)
+                    \end{align*}
+                    Since \(P(B \vert A) \neq P(B)\), we know \(B\) is not independent of \(A\).
+          \end{enumerate}
+
     \item Does the result from (a) seem to indicate that the logistic regression model has some
           ability to predict the outcome correctly? In other words, discuss what must happen if the
           logistic regression model simply generates random predictions. \\
