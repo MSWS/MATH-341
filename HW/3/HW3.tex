@@ -3,11 +3,21 @@
 \usepackage[tmargin=0.5in,bmargin=0.25in]{geometry}
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{enumitem}
+\usepackage{tikz}
 
 \title{\vspace{-5ex}MATH 341 HW 3}
 \author{Isaac Boaz}
 
 \begin{document}
+\tikzstyle{level 1}=[level distance=3.5cm, sibling distance=3.5cm]
+\tikzstyle{level 2}=[level distance=3.5cm, sibling distance=2cm]
+
+% Define styles for bags and leafs
+\tikzstyle{bag} = [text width=2em, text centered]
+\tikzstyle{end} = []
+
+\tikzstyle{edge from parent} = [draw, -latex]
+
 \maketitle
 
 \section*{Problem 4}
@@ -122,26 +132,71 @@ divided by the total) for the logistic regression model.
 \pagebreak
 
 \section*{Problem 11}
-\begin{align*}
-    P(D) = 0.025                    \\
-    P(C \vert\overline{N}) = 0.80   \\
-    P(\overline{C} \vert N) = 0.97\ \\
-\end{align*}
+\begin{tikzpicture}[grow=right, sloped]
+    \node[bag] {\(\cdot\)}
+    child {
+    node[bag] {\(\overline{D}\)}
+    child {
+    node[
+    end, label=right:
+    {\(\overline{N} \vert \overline{D}\)}
+    ] {}
+    edge from parent
+    node[above] {\(0.03\)}
+    }
+    child {
+    node[end, label=right:
+    {\(N \vert \overline{D}\)}
+    ] {}
+    edge from parent
+    node[above] {\(0.97\)}
+    }
+    edge from parent
+    node[above] {\(0.975\)}
+    }
+    child {
+    node[bag] {\(D\)}
+    child {
+    node[end, label=right:
+    {\(\overline{N} \vert D\)}] {}
+    edge from parent
+    node[above] {\(0.80\)}
+    }
+    child {
+    node[end, label=right:
+    {\(N \vert D\)}] {}
+    edge from parent
+    node[above] {\(0.2\)}
+    }
+    edge from parent
+    node[above] {\(0.025\)}
+    };
+\end{tikzpicture}
 
-\begin{center}
-    \begin{tabular}{|l|l|l|l|}
-        \hline
-                        & \multicolumn{2}{c|}{Test Result} & Total                        \\
-        \hline
-                        & Positive                         & Negative             &       \\
-        \hline
-        Disease Present & \(0.025 \cdot 0.97\)             & \(0.025 \cdot 0.03\) & 0.025 \\
-        \hline
-        Disease Absent  & \(0.975 \cdot 0.20\)             & \(0.975 \cdot 0.80\) & 0.975 \\
-        \hline
-        Total           & 0.195                            & 0.805                & 1     \\
-        \hline
-    \end{tabular}
-\end{center}
+\begin{enumerate}[label=\alph*)]
+    \item What is the probability that an individual tests positive?
+          \begin{align*}
+              P(\overline{N}) & = P(\overline{N} | D) + P(\overline{N} | \overline{D}) \\
+                              & = 0.8 \cdot 0.025 + 0.03 \cdot 0.975                   \\
+                              & = 0.04905
+          \end{align*}
+    \item Given an individual tests positive, what is the probability that they have the disease?
+          \begin{align*}
+              P(D\ \vert\ \overline{N}) & = \frac{P(D \cap \overline{N})}{P(\overline{N})}         \\
+                                        & = \frac{P(\overline{N} \cap D)}{P(\overline{N})}         \\
+                                        & = \frac{P(\overline{N}\ \vert\ D) P(D)}{P(\overline{N})} \\
+                                        & = \frac{0.8 \cdot 0.025}{0.04905} = 0.40774719673
+          \end{align*}
+    \item Given an individual tests negative, what is the probability that they don't have the disease?
+          \begin{align*}
+              P(\overline{D} \vert N) & = \frac{P(\overline{D} \cap N)}{P(N)}                    \\
+                                      & = \frac{P(N \cap \overline{D})}{P(N)}                    \\
+                                      & = \frac{P(N \vert \overline{D}) P(\overline{D})}{P(N)}   \\
+                                      & = \frac{0.97 \cdot 0.975}{1 - P(\overline{N})}           \\
+                                      & = \frac{0.97 \cdot 0.975}{1 - 0.04905} \approx 0.9945317
+          \end{align*}
+    \item Comment on (b) and (c). \\
+          I found these results rather surprising, as it shows that WHO cares (statistically) more about false positives than false negatives. Considering the probability of having the disease given a positive test is significantly lower than the probability of not having the disease given a negative test, it goes to show how the multiplicative aspect probabilities can heavily impact raw statistics.
+\end{enumerate}
 
 \end{document}
