@@ -35,10 +35,8 @@ Measuring the effectiveness of treatment.
           RR should be \(> 1\) if the treatment increases the chances of harm, and \(< 1\) if it reduces the chances of harm.
           As such, the numerator represents people that got `bad' despite being treated, and the denominator represents people that got `bad' without being treated.
     \item \(ARR = P(B \vert \overline{T}) - P(B \vert T)\) \\
-          The \textbf{A} in ARR stands for \textbf{A}bsolute, and as such, it is the difference between the two probabilities.
+          The \textbf{A} in ARR stands for \textbf{A}bsolute, and as such, it is the difference between the probability of getting diseased without treatment vs with treatment.
     \item Is it possible to have a sutation where \(RR \approx 0 \text{, and} ARR \approx 0\)? \\
-          Consider a ``Rare disease'', where
-
           Yes, it is possible to have a low relative risk (RR) and a high absolute risk reduction (ARR) when the baseline risk of the outcome is low, and the treatment has a large effect on reducing the risk.
 
           Example: Consider a treatment for a rare disease that affects only 1 in 10,000 people. If the treatment is given to 1000 people with the disease, it prevents one death. Without the treatment, one death would have occurred.
@@ -48,7 +46,7 @@ Measuring the effectiveness of treatment.
               ARR = \frac{1}{1000} = 0.1\%
           \end{align*}
 
-          In this example, the relative risk is low (10\% reduction), and the absolute risk reduction is high (0.1\%).
+          In this example, the relative risk is low (10\% reduction), and the absolute risk reduction is 0.1\%.
 
     \item Show that \(P(B \vert \overline{T}) = \frac{ARR}{1-RR}\)
           \begin{align*}
@@ -71,58 +69,60 @@ The following website compares different algorithms for predicting Australian cr
 approval results for 517 individuals. We focus on the confusion matrix (where each number is
 divided by the total) for the logistic regression model.
 
-\begin{tabular}{|l|l|l|l|}
-    \hline
-                      & Predicted Denied & Predicted Approved & Total   \\
-    \hline
-    Actually Denied   & 249/517          & 38/517             & 287/517 \\
-    \hline
-    Actually Approved & 18/517           & 149/517            & 230/517 \\
-    \hline
-    Total             & 330/517          & 187/517            & 1       \\
-    \hline
-\end{tabular}
+\begin{center}
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+                          & Predicted Denied & Predicted Approved & Total   \\
+        \hline
+        Actually Denied   & 249/517          & 38/517             & 287/517 \\
+        \hline
+        Actually Approved & 18/517           & 149/517            & 230/517 \\
+        \hline
+        Total             & 330/517          & 187/517            & 1       \\
+        \hline
+    \end{tabular}
 
-\begin{tikzpicture}[grow=right, sloped]
-    \node[bag] {\(\cdot\)}
-    child {
-    node[bag] {\(\overline{B}\)}
-    child {
-    node[
-    end, label=right:
-    {\(\overline{A} \vert \overline{B}\)}
-    ] {}
-    edge from parent
-    node[above] {\(\frac{249}{517}\)}
-    }
-    child {
-    node[end, label=right:
-    {\(A \vert \overline{B}\)}
-    ] {}
-    edge from parent
-    node[above] {\(\frac{18}{517}\)}
-    }
-    edge from parent
-    node[above] {\(\frac{330}{517}\)}
-    }
-    child {
-    node[bag] {\(B\)}
-    child {
-    node[end, label=right:
-    {\(\overline{A} \vert B\)}] {}
-    edge from parent
-    node[above] {\(\frac{38}{517}\)}
-    }
-    child {
-    node[end, label=right:
-    {\(A \vert B\)}] {}
-    edge from parent
-    node[above] {\(\frac{149}{517}\)}
-    }
-    edge from parent
-    node[above] {\(\frac{187}{517}\)}
-    };
-\end{tikzpicture}
+    \begin{tikzpicture}[grow=right, sloped]
+        \node[bag] {\(\cdot\)}
+        child {
+        node[bag] {\(\overline{B}\)}
+        child {
+        node[
+        end, label=right:
+        {\(\overline{A} \vert \overline{B}\)}
+        ] {}
+        edge from parent
+        node[above] {\(\frac{249}{517}\)}
+        }
+        child {
+        node[end, label=right:
+        {\(A \vert \overline{B}\)}
+        ] {}
+        edge from parent
+        node[above] {\(\frac{18}{517}\)}
+        }
+        edge from parent
+        node[above] {\(\frac{330}{517}\)}
+        }
+        child {
+        node[bag] {\(B\)}
+        child {
+        node[end, label=right:
+        {\(\overline{A} \vert B\)}] {}
+        edge from parent
+        node[above] {\(\frac{38}{517}\)}
+        }
+        child {
+        node[end, label=right:
+        {\(A \vert B\)}] {}
+        edge from parent
+        node[above] {\(\frac{149}{517}\)}
+        }
+        edge from parent
+        node[above] {\(\frac{187}{517}\)}
+        };
+    \end{tikzpicture}
+\end{center}
 
 \begin{enumerate}[label=\alph*)]
     \item Let A denote ‘Actually Approved’ and B denote ‘Predicted Approved’. Show
@@ -145,7 +145,7 @@ divided by the total) for the logistic regression model.
                         P(A)         & = \frac{360}{517} \approx 0.6963249516      \\
                         P(A \vert B) & \neq P(A)
                     \end{align*}
-                    Since \(P(A \vert B \neq P(A))\), we know that \(A\) is not independent of \(B\).
+                    Since \(P(A \vert B) \neq P(A)\), we know that \(A\) is not independent of \(B\).
               \item We could also check if B is independent of A if \(P(B \vert A) = P(B)\)
                     \begin{align*}
                         P(B \vert A)           & = \frac{P(B \cap A)}{P(B)}                             \\
@@ -177,46 +177,48 @@ divided by the total) for the logistic regression model.
 \pagebreak
 
 \section*{Problem 11}
-\begin{tikzpicture}[grow=right, sloped]
-    \node[bag] {\(\cdot\)}
-    child {
-    node[bag] {\(\overline{D}\)}
-    child {
-    node[
-    end, label=right:
-    {\(\overline{N} \vert \overline{D}\)}
-    ] {}
-    edge from parent
-    node[above] {\(0.03\)}
-    }
-    child {
-    node[end, label=right:
-    {\(N \vert \overline{D}\)}
-    ] {}
-    edge from parent
-    node[above] {\(0.97\)}
-    }
-    edge from parent
-    node[above] {\(0.975\)}
-    }
-    child {
-    node[bag] {\(D\)}
-    child {
-    node[end, label=right:
-    {\(\overline{N} \vert D\)}] {}
-    edge from parent
-    node[above] {\(0.80\)}
-    }
-    child {
-    node[end, label=right:
-    {\(N \vert D\)}] {}
-    edge from parent
-    node[above] {\(0.20\)}
-    }
-    edge from parent
-    node[above] {\(0.025\)}
-    };
-\end{tikzpicture}
+\begin{center}
+    \begin{tikzpicture}[grow=right, sloped]
+        \node[bag] {\(\cdot\)}
+        child {
+        node[bag] {\(\overline{D}\)}
+        child {
+        node[
+        end, label=right:
+        {\(\overline{N} \vert \overline{D}\)}
+        ] {}
+        edge from parent
+        node[above] {\(0.03\)}
+        }
+        child {
+        node[end, label=right:
+        {\(N \vert \overline{D}\)}
+        ] {}
+        edge from parent
+        node[above] {\(0.97\)}
+        }
+        edge from parent
+        node[above] {\(0.975\)}
+        }
+        child {
+        node[bag] {\(D\)}
+        child {
+        node[end, label=right:
+        {\(\overline{N} \vert D\)}] {}
+        edge from parent
+        node[above] {\(0.80\)}
+        }
+        child {
+        node[end, label=right:
+        {\(N \vert D\)}] {}
+        edge from parent
+        node[above] {\(0.20\)}
+        }
+        edge from parent
+        node[above] {\(0.025\)}
+        };
+    \end{tikzpicture}
+\end{center}
 
 \begin{enumerate}[label=\alph*)]
     \item What is the probability that an individual tests positive?
