@@ -1,0 +1,64 @@
+\documentclass{article}
+
+\usepackage[tmargin=0.5in,bmargin=0.25in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+\usepackage{tikz}
+
+\title{\vspace{-5ex}MATH 341 Study Guide \\ Midterm 1}
+\author{Isaac Boaz}
+
+\begin{document}
+\maketitle
+
+\section*{Definitions and Laws}
+\begin{enumerate}[noitemsep]
+    \item \(A\) and \(B\) are \textbf{mutually exclusive} or \textbf{disjoint} if \(A \cap B = \varnothing\).
+    \item \(A_1, A_2, \dots, A_k\) are \textbf{exhaustive events} if \(A_1 \cup A_2 \cup \dots \cup A_k = S\).
+    \item Commutative laws
+          \begin{itemize}
+              \item \(A \cup B = B \cup A\)
+              \item \(A \cap B = B \cap A\)
+          \end{itemize}
+    \item Associative laws
+          \begin{itemize}
+              \item \(A \cup (B \cup C) = (A \cup B) \cup C\)
+              \item \(A \cap (B \cap C) = (A \cap B) \cap C\)
+          \end{itemize}
+    \item Distributive laws
+          \begin{itemize}
+              \item \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)
+              \item \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C)\)
+          \end{itemize}
+    \item De Morgan's laws
+          \begin{itemize}
+              \item \(\overline{(A \cup B)} = \overline{A} \cap \overline{B}\)
+              \item \(\overline{(A \cap B)} = \overline{A} \cup \overline{B}\)
+          \end{itemize}
+\end{enumerate}
+
+\section*{Axioms}
+\begin{enumerate}
+    \item For any event \(A\) in \(S,\ 0 \leq P(A) \leq1\).
+    \item P(S) = 1.
+    \item For any sequence of mutually exclusive (disjoint) events \(A_1, A_2, A_3, \dots \text{in} S (\text{i.e., } A_i \cap A_j = \varnothing \text{ whenever } i \neq j\)), then
+          \begin{equation*}
+              P(A_1 \cup A_2 \cup A_3 \dots) = \sum_{i=1}^{=}P(A_i).
+          \end{equation*}
+\end{enumerate}
+
+These axioms imply that
+\begin{itemize}
+    \item \(P(\varnothing) = 0.\)
+    \item \(P(A \cup B) = P(A) + P(B)\) when \(A\) and \(B\) are mutually exclusive.
+\end{itemize}
+
+\section*{Permutations and Combinations}
+\begin{tabular}{c|c|c}
+    \hline
+    Select \(r\) from \(n\) & Order matters         & Order does not matter \\
+    Without replacement     & \(\frac{n!}{(n-r)!}\) & \(\binom{n}{r}\)      \\
+    With replacement        & \(\frac{n^r}{r!}\)    & \(\binom{n+r-1}{r}\)  \\
+\end{tabular}
+
+\end{document}
