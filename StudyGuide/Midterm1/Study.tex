@@ -4,6 +4,7 @@
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{enumitem}
 \usepackage{tikz}
+\usepackage{multicol}
 
 \title{\vspace{-5ex}MATH 341 Study Guide \\ Midterm 1}
 \author{Isaac Boaz}
@@ -54,11 +55,36 @@ These axioms imply that
 \end{itemize}
 
 \section*{Permutations and Combinations}
-\begin{tabular}{c|c|c}
-    \hline
-    Select \(r\) from \(n\) & Order matters         & Order does not matter \\
-    Without replacement     & \(\frac{n!}{(n-r)!}\) & \(\binom{n}{r}\)      \\
-    With replacement        & \(\frac{n^r}{r!}\)    & \(\binom{n+r-1}{r}\)  \\
-\end{tabular}
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \rule{0pt}{3ex} Select \(r\) from \(n\) & Order matters                    & Order does not matter                              \\[1ex]
+        \hline
+        \rule{0pt}{3ex} Without replacement     & \({}_nP_r  = \frac{n!}{(n-r)!}\) & \({}_nC_r = \binom{n}{r} = \frac{n!}{r!(n - r)!}\) \\[1ex]
+        \hline
+        \rule{0pt}{3ex} With replacement        & \(n^r\)                          & \(\binom{n+r-1}{r}\)                               \\[1ex]
+        \hline
+    \end{tabular}
+\end{center}
+
+\pagebreak
+
+\section*{Conditional Probability}
+The \textbf{conditional probability} of \(A\) given \(B\) has occured is
+\begin{multicols}{2}{\parbox[c][2em]{\hsize}{
+            \begin{equation*}
+                P(A \mid B) = \frac{P(A \cap B)}{P(B)}
+            \end{equation*}
+        }}
+    \columnbreak
+    \begin{equation*}
+        P(A \cap B) = P(A \mid B)P(B).
+    \end{equation*}
+\end{multicols}
+
+\section*{Bayes' Theorem}
+\begin{equation*}
+    P(A \mid B) = \frac{P(B \mid A)P(A)}{P(B)}.
+\end{equation*}
 
 \end{document}
