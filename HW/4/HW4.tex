@@ -1,0 +1,88 @@
+\documentclass{article}
+
+\usepackage[tmargin=0.5in,bmargin=0.25in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+\title{Math 341 Homework 4}
+\author{Isaac Boaz}
+
+\renewcommand{\arraystretch}{1.3}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 6}
+Let \(X\) be a random variable representing the number of times a randomly selected student goes to a gym in a week.
+The amount of time usually spent is \(50X - 20\), find the expected number of times they go to the gym (\(E[X]\)), expected time (in minutes \(E[50X - 20]\)), and variability in the amount of time at the gym (\(Var[50X - 20]\)). Assuming \(X\) has the following pmf.
+\begin{enumerate}[label = \alph*)]
+    \item \(f(x) = \frac{-3x+15}{24},\ x = 1,2,4\)
+          \begin{enumerate}
+              \item Let's make a table to better understand and represent this pmf.
+                    \begin{center}
+                        \begin{tabular}{c|ccc}
+                            x         & 1               & 2               & 4               \\
+                            \hline
+                            \(f(x)\)  & \(\frac{1}{2}\) & \(\frac{3}{8}\) & \(\frac{1}{8}\) \\
+                            \(xf(x)\) & \(\frac{1}{2}\) & \(\frac{6}{8}\) & \(\frac{4}{8}\)
+                        \end{tabular}
+                    \end{center}
+                    Summing up all \(xf(x)\) tells us the expected number of times a random person goes to the gym \(E[X] = 1.75\) times.
+                    Applying the same table technique to \(50X - 20\) for time spent:
+                    \begin{center}
+                        \begin{tabular}{c|ccc}
+                            x                  & 1               & 2               & 4               \\
+                            \hline
+                            \(f(x)\)           & \(\frac{1}{2}\) & \(\frac{3}{8}\) & \(\frac{1}{8}\) \\
+                            \((50x - 20)f(x)\) & \(15\)          & \(30\)          & \(22.5\)
+                        \end{tabular}
+                    \end{center}
+                    Gives us an estimated time spent of \(E[50X - 20]\) = 67.5 minutes.
+                    Finally, to calculate the \(Var[50X - 20]\) we need to calculate the expected value of the squared deviation from the mean.
+                    \begin{align*}
+                        Var(50X - 20) & = Var(50X) = 50^2Var(X) = 2500Var(X)                                                        \\
+                                      & = 2500 (E[x^2] - \mu^2)                                                                     \\
+                        \mu           & = 1.75                                                                                      \\
+                        E[x^2]        & =                                 \frac{1^2}{2} + \frac{2^2\cdot3}{8} + \frac{4^2\cdot1}{8} \\
+                                      & = \frac{1}{2} + \frac{3}{2} + 2 = 4                                                         \\
+                        Var(50X - 20) & = 2500 (4 - 1.75^2)                                                                         \\
+                                      & = 2500 (0.9375) = 2343.75
+                    \end{align*}
+          \end{enumerate}
+    \item \(f(x) =
+          \begin{cases}
+              0.65,\ x = 1 \\
+              0.35,\ x = 5
+          \end{cases}
+          \)
+\end{enumerate}
+
+\section*{Problem 11}
+
+\begin{enumerate}
+    \item A sports team has a win/loss record of 23-24. Let \(p\) denote the probability that they win the next game. Let \(X\) denote a random variable for the \# of wins in the next 10 games.
+          \begin{enumerate}[label = \alph*)]
+              \item Based on the win/loss record, suggest a value for \(p\) and a distribution for \(X\).
+                    \begin{align*}
+                        p      & = \frac{23}{24 + 23} \approx 0.4894 \\
+                        X      & = 10 \cdot 0.4894 = 4.894           \\
+                        Var(x) & = p(1 - p)                          \\
+                               & = 0.4894(1 - 0.4894) = 0.247
+                    \end{align*}
+              \item Discuss the reasonableness of the distribution in (a) in terms of `independent and identical trials' \\
+                    Games are not necessarily independent, depending on the lineup, the better a team may progress, they are more likely to face more difficult teams.
+              \item Calculate the probability that they will have 8 wins in the next 10.
+                    \begin{align*}
+                        P(X = 8) & = \binom{10}{8}0.4894^8(1 - 0.4894)^2 \\
+                                 & \approx 0.0386088
+                    \end{align*}
+              \item Calculate the expected number of wins and its standard deviation in the next 10 games.
+                    \begin{align*}
+                        E(X)   & = 10 \cdot 0.4894 = 4.894            \\
+                        Var(X) & = 10 \cdot 0.4894(1 - 0.4894) = 2.47
+                    \end{align*}
+          \end{enumerate}
+\end{enumerate}
+
+\end{document}
