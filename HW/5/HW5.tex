@@ -15,10 +15,34 @@
 
 \section*{Problem 2}
 \begin{enumerate}[label=\alph*)]
-    \item Binomial where \(n = 8,\ p = 0.001\)
+    \item Can be modeled as the Binomial Distribution \(x \sim b(8, 0.001)\) where \(n = 8,\ p = 0.001\)
     \item No, the cars differ, track conditions may be different, different drivers
           Additionally, one race being faster may motivate a driver and impact them mentally to do better/worse
-    \item
+    \item No, the poisson distribution requires \(n\) to be large, \(p\) to be small, and that \(np\) to be fixed. In this case, \(n\) is very small.
+    \item \(Y \approx X\) in distribution.
+          \begin{align*}
+              Y & \sim Poisson(\lambda). \\
+              \frac{e^{-Y}Y^x}{x!}
+          \end{align*}
+    \item \(P(Y = 0),\ P(X = 0)\) % These should be very close
+    \item Q1, Q2
+          Referencing d for one session, doubling these sessions keeps the poisson distribution.
+          Let W be the \# of drivers.
+          \begin{align*}
+              W \sim Poisson(2\lambda) \\
+              f
+              %       P(W = 0) & = P(X = 0, Y = 0)                                                     \\
+              %                & = P(X = 0)P(Y = 0)                                                    \\
+              %                & = \frac{e^{-\lambda} \lambda^0}{0!} \frac{e^{-\lambda} \lambda^0}{0!} \\
+              %                & = \frac{e^{-2\lambda} \lambda^0}{0!}                                  \\
+              %                & = \frac{e^{-2\lambda}}{1}                                             \\
+              %                & = e^{-2\lambda}
+          \end{align*}
+\end{enumerate}
+
+\section*{Problem 3}
+\begin{enumerate}[label=\alph*)]
+    \item Assume \(p = 0.1,\ n = 24\). Poisson with parameter \(np\) = 2.4
 \end{enumerate}
 
 \end{document}
