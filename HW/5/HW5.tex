@@ -43,6 +43,29 @@
 \section*{Problem 3}
 \begin{enumerate}[label=\alph*)]
     \item Assume \(p = 0.1,\ n = 24\). Poisson with parameter \(np\) = 2.4
+    \item Binomial takes \(\approx 2 \times\) longer at \(2.34\) for poisson vs \(4.72\) for binomial.
+\end{enumerate}
+
+\section*{Problem 14}
+Suppose \(X\) is uniformly distributed in \([a, b]\).
+\begin{enumerate}[label=\alph*)]
+    \item Let \(a \leq c \leq x \leq b\) with \(a \leq c < b\). Compute \(P(X \leq x \mid X \geq c)\).
+          \begin{align*}
+              X                         & \sim U(a, b)                                    \\
+              P(X \leq x \mid X \geq c) & = \frac{P(X \leq x \cap X \geq c)}{P(X \geq c)} \\
+                                        & = \frac{P(c\leq X \leq x)}{P(X \geq c)}         \\
+                                        & = \frac{\int_{c}^{x}f(t)dt}{\int_{c}^{b}f(t)dt} \\
+                                        & = \frac{x - c}{b - c}
+          \end{align*}
+    \item Explain \\
+          The lower bound is not \(a\), we are bounding it to c. Since everything else is the same, we can conclude that the distribution is uniform in \([c, b]\).
+    \item Blah blah blah \\
+          Let \(V \sim U(a, c)\), show \(E[X] = wE[V] + (1-w)E[Y]\) where \(w = \frac{c-a}{b-a}\)
+          \begin{align*}
+              E[Y] = \frac{b+c}{2} \\
+              E[V] = \frac{a+c}{2} \\
+              % Simplify right hand side, w E[V] + (1-w) E[Y]
+          \end{align*}
 \end{enumerate}
 
 \end{document}
