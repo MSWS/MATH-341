@@ -65,12 +65,16 @@
           \end{align*}
 \end{enumerate}
 
+\pagebreak
+
 \section*{Problem 3}
 \begin{enumerate}[label=\alph*)]
     \item The two distributions look remarkably similar, the biggest distinction with binomial the skewness towards 0. Poisson seems to more smoothly lead towards zero compared to binomial which seems to go sinusodially.
     \item Binomial takes \(\approx 2 \times\) longer at \(2.34\) for poisson vs \(4.72\) for binomial.
           Looking at the two equations, we can see the poisson distribution is much simpler than the binomial distribution due to the \(_{n}C_r\) computation.
 \end{enumerate}
+
+\pagebreak
 
 \section*{Problem 14}
 Suppose \(X\) is uniformly distributed in \([a, b]\).
@@ -83,15 +87,42 @@ Suppose \(X\) is uniformly distributed in \([a, b]\).
                                         & = \frac{\int_{c}^{x}f(t)dt}{\int_{c}^{b}f(t)dt} \\
                                         & = \frac{x - c}{b - c}
           \end{align*}
-    \item Explain \\
+    \item Explain why (a) shows that the distribution of \(X\) given \(X \geq c\) is uniform in the interval \([c, b]\) if \(X\) is uniformly distributed in the interval \([a, b]\).\\
           The lower bound is not \(a\), we are bounding it to c. Since everything else is the same, we can conclude that the distribution is uniform in \([c, b]\).
-    \item Blah blah blah \\
-          Let \(V \sim U(a, c)\), show \(E[X] = wE[V] + (1-w)E[Y]\) where \(w = \frac{c-a}{b-a}\)
-          \begin{align*}
-              E[Y] = \frac{b+c}{2} \\
-              E[V] = \frac{a+c}{2} \\
-              % Simplify right hand side, w E[V] + (1-w) E[Y]
-          \end{align*}
+    \item Let \(V \sim U(a, c)\) and \(Y \sim U(c, b)\). show \(E[X] = wE[V] + (1-w)E[Y]\) where \(w = \frac{c-a}{b-a}\)
+        %   \begin{align*}
+        %       E[Y] = \frac{b+c}{2} \\
+        %       E[V] = \frac{a+c}{2} \\
+        %       % Simplify right hand side, w E[V] + (1-w) E[Y]
+        %   \end{align*}
+
+          Let's find the expected value of both \(V\) and \(Y\). Since both are uniformly distributed, the expected value of each can be calculated as the average of the minimum and maximum values:
+
+\begin{align*}
+E[V] &= \frac{a + c}{2} \\
+E[Y] &= \frac{c + b}{2}
+\end{align*}
+
+Next, we need to find the expected value of \(X\). To do this, we can use the fact that \(X\) can be written as a weighted average of \(V\) and \(Y\), where the weight \(w\) depends on the values of \(a,\ b\, \text{and } c\):
+
+\begin{align*}
+    E[X] &= E[wV + (1-w)Y] \\
+    &= wE[V] + (1-w)E[Y] \\
+    &= w\left(\frac{a + c}{2}\right) + (1-w)\left(\frac{c + b}{2}\right) \\
+    &= \left(\frac{c-a}{b-a}\right) \left(\frac{a + c}{2}\right) + \left(1 - \frac{c-a}{b-a}\right) \left(\frac{c + b}{2}\right) \\
+    &= \frac{(c - a)(c + a)}{2(b - a)} + \frac{(1 - \frac{c-a}{b-a})(c+b)}{2} \\
+    &= \frac{(c - a)(c + a)}{2(b - a)} + \frac{c+b}{2}\left(\frac{b-a}{b-a}+\frac{-c+a}{b-a}\right) \\
+    &= \frac{(c-a)(c+a)}{2(b-a)} + \frac{(-c+b+(a-a))(c+b)}{2(b-a)} \\
+    &= \frac{(c-a)(c+a)}{2(b-a)} + \frac{(-c+b)(c+b)}{2(b-a)} \\
+    &= \frac{c^2 - a^2 + (-c^2 + b^2)}{2(b-a)} \\
+    &= \frac{b^2-a^2}{2(b-a)} \\
+    &= \frac{((b-a)(b+a))}{2(b-a)} \\
+    &= \frac{b+a}{2}
+    % &= \frac{w(a + c) + (1-w)(c + b)}{2} \\
+    % &= \frac{wa + (1-w)b + c}{2} \\
+    % &= \frac{w(a-b) + (a + b)}{2} \\
+    % &= \frac{a + b}{2}
+\end{align*}
 \end{enumerate}
 
 \end{document}
