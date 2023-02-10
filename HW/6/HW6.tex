@@ -1,0 +1,53 @@
+\documentclass{article}
+
+\usepackage[tmargin=0.5in,bmargin=0.25in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumitem}
+
+\title{\vspace{-4ex}Math 341 Homework 6}
+\author{Isaac Boaz}
+
+\renewcommand{\arraystretch}{1.2}
+
+\begin{document}
+
+\maketitle
+
+\section*{Problem 2}
+
+Let \(X\) be a random variable representing the number of shooting stars per hour. Assume \(X\) is Poisson distributed with \(E[x] = \lambda\) (i.e: \(X \sim Poisson(\lambda)\)).
+
+\begin{enumerate}[label=\alph*)]
+    \item Instead of a 1-hour interval, consider an interval of \(t\) hours for some \(t > 0\). If \(Y\) denotes the number of stars in \(t\) hours, what is its distribution and parameter value?
+          \begin{align*}
+              Y \sim Poisson(t\lambda)
+          \end{align*}
+    \item Calculate the probability that no shooting stars are observed in \(t\) hours (i.e \(P(Y = 0)\)).
+          \begin{align*}
+              P(Y = y) = \frac{e^{-t\lambda} \cdot (t\lambda)^y}{y!}
+          \end{align*}
+          \begin{align*}
+              P(Y = 0) & = \frac{e^{-t\lambda} \cdot (t\lambda)^0}{0!} \\
+                       & = \frac{e^{-t\lambda}}{1}                     \\
+                       & = e^{-t\lambda}                               \\
+          \end{align*}
+    \item Suppose we measure the time until the first shooting star. Let \(T\) denote this time. Explain why the event \(A = \{T > t\}\) is equivalent to the event \(B = \{Y = 0\}\)
+          \begin{description}
+              \item Event \(B\) represents the event that no shooting stars are observed in \(t\) hours.
+              \item Event \(A\) represents the event that the first shooting star is observed after \(t\) hours.
+              \item Since event \(A\) is defined as \(T > t\), we know that at least \(t\) hours have passed before the first shooting star is observed.
+          \end{description}
+    \item Using (c), compute the cdf of \(T\). Then, state the distribution of \(T\) and its parameter value.
+          \begin{align*}
+              A = B    & \implies P(A) = P(B) \\
+              P(T > t) & =  P(Y = 0)          \\
+                       & = e^{-t\lambda}      \\
+          \end{align*}
+          \begin{align*}
+              \text{CDF of T: } F(t) =  P(T \leq t) \\
+              = 1 - e^{-t\lambda}
+          \end{align*}
+          Exponential distribution with parameter \(\lambda\).
+\end{enumerate}
+
+\end{document}
