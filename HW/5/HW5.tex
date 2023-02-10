@@ -18,7 +18,7 @@
     \item A reasonable distribution model would be the binomial distribution using a time of 1:21.072 as a success and any other time a failure. This would be modeled as \(x \sim b(8, 0.001)\) where \(n = 8,\ p = 0.001\).
     \item No, the cars differ, track conditions may be different, different drivers
           Additionally, one race being faster may motivate a driver and impact them mentally to do better/worse. In short, the trials are neither independent nor identical.
-    \item The poisson distribution requires \(n\) to be large, \(p\) to be small, and that \(np\) to be fixed. In this case, \(n\) is large (nowhere close to \(\infty\)).
+    \item The poisson distribution requires \(n\) to be large, \(p\) to be small, and that \(np\) to be fixed. In this case, \(n\) is small (nowhere close to \(\infty\)).
     \item Approximating \(X\) using a Poisson distribution of \(Y\):
           \begin{align*}
               Poisson(X)                         & \sim Y                                                 \\
@@ -44,19 +44,6 @@
                & = (1)1(0.999)^8                      \\
                & = 0.999^8 \approx 0.992028           \\
           \end{align*}
-          % \item Q1, Q2
-          %       Referencing d for one session, doubling these sessions keeps the poisson distribution.
-          %       Let W be the \# of drivers.
-          %       \begin{align*}
-          %           W \sim Poisson(2\lambda) \\
-          %           f
-          %           %       P(W = 0) & = P(X = 0, Y = 0)                                                     \\
-          %           %                & = P(X = 0)P(Y = 0)                                                    \\
-          %           %                & = \frac{e^{-\lambda} \lambda^0}{0!} \frac{e^{-\lambda} \lambda^0}{0!} \\
-          %           %                & = \frac{e^{-2\lambda} \lambda^0}{0!}                                  \\
-          %           %                & = \frac{e^{-2\lambda}}{1}                                             \\
-          %           %                & = e^{-2\lambda}
-          %       \end{align*}
     \item Calculate the probability that no driver will get this specific time with two sessions.
           \begin{align*}
               \lambda    & = 2\cdot0.008 = 0.016                        \\
@@ -90,12 +77,6 @@ Suppose \(X\) is uniformly distributed in \([a, b]\).
     \item Explain why (a) shows that the distribution of \(X\) given \(X \geq c\) is uniform in the interval \([c, b]\) if \(X\) is uniformly distributed in the interval \([a, b]\).\\
           The lower bound is not \(a\), we are bounding it to c. Since everything else is the same, we can conclude that the distribution is uniform in \([c, b]\).
     \item Let \(V \sim U(a, c)\) and \(Y \sim U(c, b)\). show \(E[X] = wE[V] + (1-w)E[Y]\) where \(w = \frac{c-a}{b-a}\)
-        %   \begin{align*}
-        %       E[Y] = \frac{b+c}{2} \\
-        %       E[V] = \frac{a+c}{2} \\
-        %       % Simplify right hand side, w E[V] + (1-w) E[Y]
-        %   \end{align*}
-
           Let's find the expected value of both \(V\) and \(Y\). Since both are uniformly distributed, the expected value of each can be calculated as the average of the minimum and maximum values:
 
 \begin{align*}
@@ -118,135 +99,6 @@ Next, we need to find the expected value of \(X\). To do this, we can use the fa
     &= \frac{b^2-a^2}{2(b-a)} \\
     &= \frac{((b-a)(b+a))}{2(b-a)} \\
     &= \frac{b+a}{2}
-    % &= \frac{w(a + c) + (1-w)(c + b)}{2} \\
-    % &= \frac{wa + (1-w)b + c}{2} \\
-    % &= \frac{w(a-b) + (a + b)}{2} \\
-    % &= \frac{a + b}{2}
-\end{align*}
-\end{enumerate}
-\documentclass{article}
-
-\usepackage[tmargin=0.5in,bmargin=0.25in]{geometry}
-\usepackage{amsmath, amssymb, amsthm}
-\usepackage{enumitem}
-
-\title{\vspace{-4ex}Math 341 Homework 5}
-\author{Isaac Boaz}
-
-\renewcommand{\arraystretch}{1.2}
-
-\begin{document}
-
-\maketitle
-
-\section*{Problem 2}
-\begin{enumerate}[label=\alph*)]
-    \item A reasonable distribution model would be the binomial distribution using a time of 1:21.072 as a success and any other time a failure. This would be modeled as \(x \sim b(8, 0.001)\) where \(n = 8,\ p = 0.001\).
-    \item No, the cars differ, track conditions may be different, different drivers
-          Additionally, one race being faster may motivate a driver and impact them mentally to do better/worse. In short, the trials are neither independent nor identical.
-    \item The poisson distribution requires \(n\) to be large, \(p\) to be small, and that \(np\) to be fixed. In this case, \(n\) is large (nowhere close to \(\infty\)).
-    \item Approximating \(X\) using a Poisson distribution of \(Y\):
-          \begin{align*}
-              Poisson(X)                         & \sim Y                                                 \\
-              \lambda                            & = np                                                   \\
-              \binom{n}{x}p^x(1-p)^{n-x}         & \rightarrow e^{-\lambda}\frac{\lambda^x}{x!}           \\
-              \binom{8}{x}0.001^x(1-0.001)^{8-x} & \rightarrow e^{-8\cdot0.001}\frac{(8\cdot0.001)^x}{x!} \\
-              Y                                  & = e^{-0.008} \frac{0.008^x}{x!}
-          \end{align*}
-          Using this to find \(E[Y]\) and \(Var[Y]\)
-          \begin{align*}
-              E[Y] = Var[Y] = \lambda = 8\cdot0.001 = 0.008
-          \end{align*}
-    \item \(P(Y = 0),\ P(X = 0)\) % These should be very close
-          \begin{align*}
-              P(Y = 0) & = \frac{e^{-0.008} \cdot 0.008^0}{0!} \\
-                       & = \frac{e^{-0.008}}{1}                \\
-                       & = e^{-0.008}                          \\
-                       & = 0.992032
-          \end{align*}
-          \begin{align*}
-              P(X = 0)
-               & = \binom{8}{0}0.001^0(1-0.001)^{8-0} \\
-               & = (1)1(0.999)^8                      \\
-               & = 0.999^8 \approx 0.992028           \\
-          \end{align*}
-          % \item Q1, Q2
-          %       Referencing d for one session, doubling these sessions keeps the poisson distribution.
-          %       Let W be the \# of drivers.
-          %       \begin{align*}
-          %           W \sim Poisson(2\lambda) \\
-          %           f
-          %           %       P(W = 0) & = P(X = 0, Y = 0)                                                     \\
-          %           %                & = P(X = 0)P(Y = 0)                                                    \\
-          %           %                & = \frac{e^{-\lambda} \lambda^0}{0!} \frac{e^{-\lambda} \lambda^0}{0!} \\
-          %           %                & = \frac{e^{-2\lambda} \lambda^0}{0!}                                  \\
-          %           %                & = \frac{e^{-2\lambda}}{1}                                             \\
-          %           %                & = e^{-2\lambda}
-          %       \end{align*}
-    \item Calculate the probability that no driver will get this specific time with two sessions.
-          \begin{align*}
-              \lambda    & = 2\cdot0.008 = 0.016                        \\
-              Poisson(Z) & = e^{-0.016} \frac{0.016^0}{0!} = e^{-0.016} \\
-                         & = 0.984127
-          \end{align*}
-\end{enumerate}
-
-\pagebreak
-
-\section*{Problem 3}
-\begin{enumerate}[label=\alph*)]
-    \item The two distributions look remarkably similar, the biggest distinction with binomial the skewness towards 0. Poisson seems to more smoothly lead towards zero compared to binomial which seems to go sinusodially.
-    \item Binomial takes \(\approx 2 \times\) longer at \(2.34\) for poisson vs \(4.72\) for binomial.
-          Looking at the two equations, we can see the poisson distribution is much simpler than the binomial distribution due to the \(_{n}C_r\) computation.
-\end{enumerate}
-
-\pagebreak
-
-\section*{Problem 14}
-Suppose \(X\) is uniformly distributed in \([a, b]\).
-\begin{enumerate}[label=\alph*)]
-    \item Let \(a \leq c \leq x \leq b\) with \(a \leq c < b\). Compute \(P(X \leq x \mid X \geq c)\).
-          \begin{align*}
-              X                         & \sim U(a, b)                                    \\
-              P(X \leq x \mid X \geq c) & = \frac{P(X \leq x \cap X \geq c)}{P(X \geq c)} \\
-                                        & = \frac{P(c\leq X \leq x)}{P(X \geq c)}         \\
-                                        & = \frac{\int_{c}^{x}f(t)dt}{\int_{c}^{b}f(t)dt} \\
-                                        & = \frac{x - c}{b - c}
-          \end{align*}
-    \item Explain why (a) shows that the distribution of \(X\) given \(X \geq c\) is uniform in the interval \([c, b]\) if \(X\) is uniformly distributed in the interval \([a, b]\).\\
-          The lower bound is not \(a\), we are bounding it to c. Since everything else is the same, we can conclude that the distribution is uniform in \([c, b]\).
-    \item Let \(V \sim U(a, c)\) and \(Y \sim U(c, b)\). show \(E[X] = wE[V] + (1-w)E[Y]\) where \(w = \frac{c-a}{b-a}\)
-        %   \begin{align*}
-        %       E[Y] = \frac{b+c}{2} \\
-        %       E[V] = \frac{a+c}{2} \\
-        %       % Simplify right hand side, w E[V] + (1-w) E[Y]
-        %   \end{align*}
-
-          Let's find the expected value of both \(V\) and \(Y\). Since both are uniformly distributed, the expected value of each can be calculated as the average of the minimum and maximum values:
-\begin{align*}
-E[V] &= \frac{a + c}{2} \\
-E[Y] &= \frac{c + b}{2}
-\end{align*}
-
-Next, we need to find the expected value of \(X\). To do this, we can use the fact that \(X\) can be written as a weighted average of \(V\) and \(Y\), where the weight \(w\) depends on the values of \(a,\ b\, \text{and } c\):
-
-\begin{align*}
-    E[X] &= E[wV + (1-w)Y] \\
-    &= wE[V] + (1-w)E[Y] \\
-    &= w\left(\frac{a + c}{2}\right) + (1-w)\left(\frac{c + b}{2}\right) \\
-    &= \left(\frac{c-a}{b-a}\right) \left(\frac{a + c}{2}\right) + \left(1 - \frac{c-a}{b-a}\right) \left(\frac{c + b}{2}\right) \\
-    &= \frac{(c - a)(c + a)}{2(b - a)} + \frac{(1 - \frac{c-a}{b-a})(c+b)}{2} \\
-    &= \frac{(c - a)(c + a)}{2(b - a)} + \frac{c+b}{2}\left(\frac{b-a}{b-a}+\frac{-c+a}{b-a}\right) \\
-    &= \frac{(c-a)(c+a)}{2(b-a)} + \frac{(-c+b+(a-a))(c+b)}{2(b-a)} \\
-    &= \frac{(c-a)(c+a)}{2(b-a)} + \frac{(-c+b)(c+b)}{2(b-a)} \\
-    &= \frac{c^2 - a^2 + (-c^2 + b^2)}{2(b-a)} \\
-    &= \frac{b^2-a^2}{2(b-a)} \\
-    &= \frac{((b-a)(b+a))}{2(b-a)} \\
-    &= \frac{b+a}{2}
-    % &= \frac{w(a + c) + (1-w)(c + b)}{2} \\
-    % &= \frac{wa + (1-w)b + c}{2} \\
-    % &= \frac{w(a-b) + (a + b)}{2} \\
-    % &= \frac{a + b}{2}
 \end{align*}
 \end{enumerate}
 
