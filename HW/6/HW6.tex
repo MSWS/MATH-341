@@ -50,4 +50,45 @@ Let \(X\) be a random variable representing the number of shooting stars per hou
           Exponential distribution with parameter \(\lambda\).
 \end{enumerate}
 
+\pagebreak
+
+\section*{Problem 7}
+Let \(X\) be a random variable for the percentage of Associate's degree holders. \\
+Estimated mean = 31.22, std = 5.3.
+
+\begin{enumerate}[label=\alph*)]
+    \item Using the normal distribution, compute the proportion of US countries where at least 40\% of residents have an Associate's degree.
+          \begin{align*}
+              P(X \geq 40)           \\
+              X \sim N(31.22, 5.3^2) \\
+              \mathcal{Z} = (X - \mu)/\sigma
+          \end{align*}
+          \begin{align*}
+              P(X \geq 40)  & = P(\frac{x\mu}{\sigma} \geq \frac{40-\mu}{\sigma}) \\
+              P(\mathcal{Z} & \geq\frac{40-31.22}{5.3})                           \\
+                            & = 1 - P(\mathcal{Z} < 1.657)                        \\
+                            & = 1 - P(\mathcal{Z} \leq 1.657)                     \\
+                            & = 1 - \text{pnorm(1.657)}                           \\
+                            & = 1 - 0.9512403 = 0.0487597
+          \end{align*}
+    \item Let \(Y\) denote per capita income represented by \(Y = 45000 + 1.7X\). \\
+          \begin{align*}
+              Y = aX+b, \mu = au+b, \sigma = a^2\sigma^2
+          \end{align*}
+          The distribution of \(Y\) is normal with mean \(\mu = 45000 + 1.7\cdot 31.22 = 45000 + 53.474 = 45053.474\) and standard deviation \(\sigma = 1.7\cdot 5.3 = 8.91\).
+    \item Calculate \(c\) such that \(P(|Y-45053.07| < c) = 0.758\)
+          \begin{align*}
+              P(-c < Y-45053.07 < c) = 0.758                                                                         \\
+              = P(-c < Y-45053.07) + P(Y-45053.07 < c)                                                               \\
+              = P(-c + 45053.07 < Y < c + 45053.07)                                                                  \\
+              = P(\frac{-c+45053.07-\mu_y}{\sigma_y} < \frac{Y-\mu_y}{\sigma_y} < \frac{c+45053.07-\mu_y}{\sigma_y}) \\
+              = P(\frac{-c}{\sigma_y} < \mathcal{Z} < \frac{c}{\sigma_y})                                            \\
+              = 1 - 2P(\mathcal{Z} < \frac{-c}{\sigma_y})                                                            \\
+              P(\mathcal{Z}<\frac{-c}{\sigma_y}) = \frac{1-0.758}{2}                                                 \\
+              =                                  0.121                                                               \\
+              %   = 1 - P(\mathcal{Z} < \frac{-c}{\sigma_y}) - P(\mathcal{Z} > \frac{c}{\sigma_y})                       \\
+          \end{align*}
+          where \(\sigma_y\) is the standard deviation of Y.
+\end{enumerate}
+
 \end{document}
