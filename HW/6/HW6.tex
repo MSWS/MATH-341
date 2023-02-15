@@ -20,11 +20,11 @@
 Let \(X\) be a random variable representing the number of shooting stars per hour. Assume \(X\) is Poisson distributed with \(E[x] = \lambda\) (i.e: \(X \sim Poisson(\lambda)\)).
 
 \begin{enumerate}[label=\alph*)]
-    \item Instead of a 1-hour interval, consider an interval of \(t\) hours for some \(t > 0\). If \(Y\) denotes the number of stars in \(t\) hours, what is its distribution and parameter value?
+    \item Instead of a 1-hour interval, consider an interval of \(t\) hours where \(t > 0\). If \(Y\) denotes the number of stars in \(t\) hours, what is its distribution and parameter value?
           \begin{align*}
               Y \sim Poisson(t\lambda)
           \end{align*}
-    \item Calculate the probability that no shooting stars are observed in \(t\) hours (i.e \(P(Y = 0)\)).
+    \item Calculate the probability that no shooting stars are observed in \(t\) hours (i.e: \(P(Y = 0)\)).
           \begin{align*}
               P(Y = y) = \frac{e^{-t\lambda} \cdot (t\lambda)^y}{y!}
           \end{align*}
@@ -33,7 +33,7 @@ Let \(X\) be a random variable representing the number of shooting stars per hou
                        & = \frac{e^{-t\lambda}}{1}                     \\
                        & = e^{-t\lambda}                               \\
           \end{align*}
-    \item Suppose we measure the time until the first shooting star. Let \(T\) denote this time. Explain why the event \(A = \{T > t\}\) is equivalent to the event \(B = \{Y = 0\}\)
+    \item Suppose we measure the time (\(T\)) until the first shooting star. Explain why the event \(A = \{T > t\}\) is equivalent to the event \(B = \{Y = 0\}\)
           \begin{description}
               \item Event \(B\) represents the event that no shooting stars are observed in \(t\) hours.
               \item Event \(A\) represents the event that the first shooting star is observed after \(t\) hours.
@@ -49,20 +49,20 @@ Let \(X\) be a random variable representing the number of shooting stars per hou
               \text{CDF of T: } F(t) =  P(T \leq t) \\
               = 1 - e^{-t\lambda}
           \end{align*}
-          \(T\) represents an exponential distribution with parameter \(1/\lambda\).
+          \(T\) represents an exponential distribution with parameter \(\lambda\).
 \end{enumerate}
 
 \pagebreak
 
 \section*{Problem 7}
-Let \(X\) be a random variable for the percentage of Associate's degree holders where \(\mu = 31.22,\ \sigma = 5.3\).
+\(X\) is a random variable for the \% of degree holders where \(\mu = 31.22,\ \sigma = 5.3\).
 
 \begin{enumerate}[label=\alph*)]
-    \item Using the normal distribution, compute the proportion of US countries where at least 40\% of residents have an Associate's degree.
+    \item Using a normal distribution, compute the proportion of countries where \(\geq 40\%\) have a degree.
           \begin{align*}
               P           & (X \geq 40)          \\
-              X           & \sim N(31.22, 5.3^2) \\
-              \mathcal{Z} & = (X - \mu)/\sigma
+              X      \sim\ & N(31.22, 5.3^2) \\
+              \mathcal{Z} =\ & (X - \mu)/\sigma
           \end{align*}
           \begin{align*}
               P(X \geq 40)  & = P(\frac{x\mu}{\sigma} \geq \frac{40-\mu}{\sigma}) \\
@@ -75,16 +75,16 @@ Let \(X\) be a random variable for the percentage of Associate's degree holders 
           \begin{align*}
               Y = aX+b, \mu = au+b, \sigma = a^2\sigma^2
           \end{align*}
-          We know that \(Y = aX + b\) can be represented as a Normal Distribution such as:
+          We know that \(Y = aX + b\) can be represented as a Normal Distribution such that:
           \begin{align*}
               Y \sim N(a\mu + b, a^2\sigma^2)
           \end{align*}
           Plugging in the values for \(a, b, \mu, \sigma\):
           \begin{align*}
               \mu_y = 1.7\cdot 31.22 + 45000 = 45053.074 \\
-              \sigma_y = 1.7^2\cdot 5.3^2 = 81.1801
+              \sigma_y^2 = 1.7^2\cdot 5.3^2 = 81.1801
           \end{align*}
-          As such, \(Y\) is normally distributed with \(\mu_y = 45053.074\) and \(\sigma_y = 81.1801\).
+          As such, \(Y\) is normally distributed with \(\mu_y = 45053.074\) and \(\sigma_y^2 = 81.1801\).
           %   The distribution of \(Y\) is normal with mean \(\mu = 45000 + 1.7\cdot 31.22 = 45000 + 53.474 = 45053.474\) and standard deviation \(\sigma = 1.7\cdot 5.3 = 8.91\).
     \item Calculate \(c\) such that \(P(|Y-45053.07| < c) = 0.758\)
           \begin{align*}
@@ -97,14 +97,18 @@ Let \(X\) be a random variable for the percentage of Associate's degree holders 
                                                      & =                                  0.121                                                               \\
               _{\mathcal{Z}}                         & = \frac{c}{\sigma_y}                                                                                   \\
               P(\mathcal{Z\leq_{\mathcal{Z}}})       & = 0.121                                                                                                \\
-              _{\mathcal{Z}} = \text{invNorm(0.121)} & = -1.1700                                                                                              \\
+              _{\mathcal{Z}} & = \text{invNorm(0.121)} = -1.1700                                                                                              \\
               c                                      & = -1.17 \cdot \sigma_y                                                                                 \\
-              c                                      & = -1.17 \cdot 81.1801 = -94.98
+              c                                      & = -1.17 \cdot \sqrt{81.1801} = -10.54
           \end{align*}
-    \item For any \(N\) with \(\mu \text{ and } \sigma^2,\ Q_1 - 1.5IQR = \mu - 2.68 \sigma\)
+    \item For any \(N\) with \(\mu \text{ and } \sigma^2,\ Q_1 - 1.5IQR = \mu - 2.68 \sigma\) and \(Q_3 + 1.5IQR = \mu + 2.68 \sigma\).
           \begin{align*}
-              P(\mu - 2.68 \sigma \leq X \leq \mu + 2.68 \sigma) \\
-              = P(-2.68 \leq \frac{X-\mu}{\sigma} \leq 2.68)     \\
+              P(\mu - 2.68 & \sigma \leq X \leq \mu + 2.68 \sigma) \\
+              & = P(-2.68 \leq \frac{X-\mu}{\sigma} \leq 2.68)     \\
+              & = P(-2.68 \leq \mathcal{Z} \leq 2.68)               \\
+              & = P(\mathcal{Z} \leq 2.68) - P(\mathcal{Z} \leq -2.68) \\ 
+              & = 0.99632 - 0.00368          \\
+              & = 0.99264
           \end{align*}
 \end{enumerate}
 
