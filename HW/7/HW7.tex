@@ -16,18 +16,45 @@
 \maketitle
 
 \section*{Problem 3}
+\begin{enumerate}[label=(\alph*)]
+    \item \begin{align*}
+              X \sim N(10.05, 0.04) \\
+              \mu = 10.05,\ \sigma^2 = 0.04
+          \end{align*}
+          \begin{align*}
+              P(X < & 9.721)                                               \\
+                    & = P(\frac{x-\mu}{\sigma} < \frac{9.721-\mu}{\sigma}) \\
+                    & = P(\mathcal{Z} < \frac{9.721-10.05}{\sqrt{0.04}})   \\
+                    & \approx 0.049985
+          \end{align*}
+    \item \begin{align*}
+              Y           & \sim b(9, 0.049985)                   \\
+              P(Y \geq 2) & = 1 - P(Y < 2)                        \\
+                          & = 1 - P(Y \leq 1)                     \\
+                          & = 1 - \text{binomcdf}(9, 0.049985, 1) \\
+                          & \approx 0.0711737
+          \end{align*}
+    \item \begin{align*}
+              P(\overline{X} \leq 10.03)                                                                    \\
+              = P(\frac{\overline{X} - \mu}{\sigma/\sqrt{n}} \leq \frac{10.03-\mu}{\sqrt{\sigma/\sqrt{n}}}) \\
+              = P(\mathcal{Z} \leq \frac{10.03-10.05}{\sqrt{0.04/9}})                                       \\
+              = P(\mathcal{Z} \leq -0.3)                                                                    \\
+              \approx 0.382092
+          \end{align*}
+\end{enumerate}
+
 \pagebreak
 \section*{Problem 8}
 
-\begin{enumerate}[label=\alph*)]
+\begin{enumerate}[label=(\alph*)]
     \item \includegraphics[width=0.5\textwidth]{histogram.png}
     \item Yes, the sample means appear to be normally distributed.
     \item For \(X \sim Exp(15)\), it is know that \(\mu = 15\) and \(\sigma^2 = 225\). By the CLT, this implies that \(\overline{X}\) is approximately normally distributed with mean 15 and variance \(225/n\), where \(n = 200\) in this case. Calculate mean (sample.means) and var (sample.means) and report if these values are close to the theoretical values given by the CLT. \\
           \begin{tabular}{l|rl}
-              mean(sample.means) & 14.93516 \\
-              var(sample.means)  & 1.162514 \\
-              CLTmean(sample.means) & 15 \\
-              CLTvar(sample.means) & \(\frac{\sqrt{225}}{\sqrt{200}}\) & \(\approx 1.06066\)  \\
+              mean(sample.means)    & 14.93516                                                \\
+              var(sample.means)     & 1.162514                                                \\
+              CLTmean(sample.means) & 15                                                      \\
+              CLTvar(sample.means)  & \(\frac{\sqrt{225}}{\sqrt{200}}\) & \(\approx 1.06066\) \\
           \end{tabular} \\[1.0em]
           The predicted values given from the CLT are similar to the actual values calculated from the data.
 \end{enumerate}
@@ -35,7 +62,7 @@
 \pagebreak
 \section*{Problem 9}
 Hogwarts Legacy Pog
-\begin{enumerate}[label=\alph*)]
+\begin{enumerate}[label=(\alph*)]
     \item \includegraphics[width=0.5\textwidth]{hogwarts.png} \\
           The exponential distribution assumption does not fit the data very well, though it could be argued that in terms of decay, the PDF does seem to exponentially decay, albeit not very smoothly.
           Given our options from class (exponential, normal, and constant), the best option would indeed be exponential.
@@ -50,12 +77,14 @@ Hogwarts Legacy Pog
               \sigma & = 0.58                           \\
           \end{align*}
           \begin{align*}
-              X \sim Exp(\theta)& ,\ \theta = 0.58                                                                                    \\
-              \text{(CLT)} \approx P(\frac{0.55 - 0.58}{0.58/\sqrt{100}} \leq & \mathcal{Z} \leq \frac{0.65 - 0.58}{0.58/\sqrt{100}}) \\
-              \approx P(-0.005172414 \leq & \mathcal{Z} \leq 0.01206897)                                                              \\
-              & \approx 0.0068782
+                           & X \sim        Exp(\theta),\ \theta = 0.58                                                                 \\
+              \text{(CLT)} & \approx P(\frac{0.55 - 0.58}{0.58/\sqrt{100}} \leq  \mathcal{Z} \leq \frac{0.65 - 0.58}{0.58/\sqrt{100}}) \\
+                           & \approx P(-0.005172414 \leq                                      \mathcal{Z} \leq 0.01206897)             \\
+                           & \approx 0.0068782
           \end{align*}
-    \item The simulated probability is 0.8351 (compared to the actual probability being \(\approx 0.0068782\)). The difference can be explain by the CLT expecting a normal distribution that can estimate the mean of the whole population. In this case, however, the data is fit to an exponential fit.
+    \item The simulated probability is 0.8351 (compared to the actual probability being \(\approx 0.0068782\)). \\
+          These observations are not necessarily independent, as you can create a rough estimate based on how many viewers will watch based on previous data.
+          Lastly, this data is not identical, as hype for the game is likely highest near the release, and will drop off further.
 \end{enumerate}
 
 \end{document}
