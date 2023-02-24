@@ -12,6 +12,23 @@
 \begin{document}
 \maketitle
 \section*{Problem 7}
+\begin{enumerate}[label=(\alph*)]
+    % sample mean sales: 43698770
+    % sample dev sales: 40268914
+    \item I'd really rather not
+    \item \begin{align*}
+              \alpha = 1 - 0.9 = 0.1 \\
+              \alpha/2 = 0.05        \\
+              n - 1 = 43 - 1 = 42
+          \end{align*}
+          \begin{align*}
+              t_{\alpha, n-1} = t_{0.05, 42}        \\
+              = \text{qt}(0.05,\ 42,\ \text{FALSE}) \\
+              = -1.681952
+              % = 2.021
+          \end{align*}
+\end{enumerate}
+
 \pagebreak
 \section*{Problem 12}
 \pagebreak
@@ -36,9 +53,9 @@
                               & \approx 0.866628 - 0.124652 \\
                               & \approx 0.7419763
           \end{align*}
-    \item The poisson's approximation is a good approximation for the binomial distribution when \(n\) is large and \(p\) is small, and the two probabilities reflect this.
+    \item The Poisson approximation is a good approximation for the binomial distribution when \(n\) is large and \(p\) is small, and the two probabilities reflect this.
 \end{enumerate}
-
+\pagebreak
 \section*{Problem 14}
 
 \end{document}
