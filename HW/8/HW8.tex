@@ -10,6 +10,7 @@
 \author{Isaac Boaz}
 
 \renewcommand{\arraystretch}{1.2}
+\newcommand{\ceil}[1]{\lceil {#1} \rceil}
 
 \begin{document}
 \maketitle
@@ -72,5 +73,41 @@
 \end{enumerate}
 \pagebreak
 \section*{Problem 14}
+\begin{enumerate}[label=(\alph*)]
+    \item To achieve a 95\% confidence interval with a margin of error being at most 0.025:
+          \begin{align*}
+              n & = \frac{z_{a/2}^2 \sigma^2}{E^2} \\
+              n & = \frac{z_{a/2}^2 p(1-p)}{E^2}
+          \end{align*}
+          \begin{align*}
+              E                                                               & = 0.025         \\
+              \alpha = 1 - 0.98                                               & = 0.02          \\
+              Z_{\alpha/2}                                         = Z_{0.01} &                 \\
+              \text{invNorm(0.01, 0, 1, RIGHT)}                               & =  2.326        \\
+              P                                                               & \rightarrow 0.5
+          \end{align*}
+          \begin{align*}
+              n \geq \frac{2.326^2 0.5(1 - 0.5)}{0.025^2} \\
+              \geq \ceil{2164.1104} = 2165
+          \end{align*}
+    \item For the life of a light bulb that is normally with \(\sigma = 25\). To find a CI with 95\% and error \(\leq 2.5\):
+          \begin{align*}
+              E = 2.5                                      \\
+              \alpha = 1 - 0.95 = 0.05                     \\
+              Z_{\alpha/2} = Z_{0.025}                     \\
+              = \text{invNorm(0.025, 0, 1, RIGHT)} = 1.959 \\
+              n \geq \frac{1.959^2 \cdot 25^2}{2.5^2}      \\
+              \geq \ceil{383.76} \rightarrow 384\end{align*}
+    \item Creating a 95\% CI with an error at most 0.05 assuming \(0.1 \leq p \leq 0.3\):
+          \begin{align*}
+              E = 0.05                                         \\
+              \alpha = 1 - 0.95 = 0.05                         \\
+              Z_{\alpha/2} = Z_{0.025}                         \\
+              = \text{invNorm(0.025, 0, 1, RIGHT)} = 1.959     \\
+              P \rightarrow 0.3                                \\
+              n \geq \frac{1.959^2 \cdot 0.3(1 - 0.3)}{0.05^2} \\
+              \geq \ceil{322.365204} = 323
+          \end{align*}
+\end{enumerate}
 
 \end{document}
