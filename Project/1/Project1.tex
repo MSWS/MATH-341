@@ -61,6 +61,7 @@
           \end{multicols}
     \item This dataset is not necessarily independent or identical. Taking two random samples from any time between the two data groups may result in comparing a near-beginning season race to a near-end season race.
     \item It can be assumed that both datasets are distributed similarly, and are similar enough to be considered independent.
+    \item In the case of exponential distribution, since the variance is equal to the mean it would not make sense to assume common variance.
     \item t.test() results:\\
           Two Sample t-test
 
@@ -84,14 +85,15 @@
           sample estimates:
           mean of x, mean of y /
           1.328827, 1.421543
-        \item \includegraphics[options]{q-qplot.png}
+    \item Based purely on the given intervals by the tests, both intervals encapsulate 0 (having negative and positive on either end). As such, there is no statistically significant change in the distribution between these two time periods.
+    \item \includegraphics[options]{q-qplot.png}
 \end{enumerate}
 
 \pagebreak
 \section*{Team Description}
 \begin{description}
-    \item[Members] Isaac Boaz 
-    \item[Project Title] Formula One Racing Data Analysis 
+    \item[Members] Isaac Boaz
+    \item[Project Title] Formula One Racing Data Analysis
 \end{description}
 
 \end{document}
