@@ -85,8 +85,20 @@
           sample estimates:
           mean of x, mean of y /
           1.328827, 1.421543
-    \item Based purely on the given intervals by the tests, both intervals encapsulate 0 (having negative and positive on either end). As such, there is no statistically significant change in the distribution between these two time periods.
-    \item \includegraphics[options]{q-qplot.png}
+    \item Based purely on the given intervals by the tests, both intervals encapsulate 0 (having negative and positive on either end). As such, there is no statistically significant change in the distribution between these two time periods. \addtocounter{enumi}{1}
+    \item
+          \setlength{\columnsep}{0.4cm}
+          \begin{multicols}{2}
+              Looking at the Q-Q plot, we can see that the first dataset follows the exponential distribution more closely than after the introduction of the VSC.
+              \\
+              \includegraphics[scale=0.5]{q-qplot.png}
+          \end{multicols}
+    \item
+          \begin{multicols}{2}
+              The ACF plot shows us only one significant spike near the beginning of the dataset, which could be attributed to an outlier. Overall, there is a lack of evidence against independence. \\
+              \includegraphics[scale=0.5]{acfplot.png}
+          \end{multicols}
+    \item This project introduced a lot of different statistical and probabilistic ideas. I think having a more thorough introduction of the formulas and equations covered (such as t tests) would more solidly introduce me to these ideas. Overall, this project taught me a lot about probability and statistics.
 \end{enumerate}
 
 \pagebreak
