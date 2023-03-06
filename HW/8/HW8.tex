@@ -4,6 +4,7 @@
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{enumitem}
 \usepackage{graphicx}
+\usepackage{multicol}
 \graphicspath{{./}}
 
 \title{\vspace{-4ex}Math 341 Homework 8}
@@ -47,6 +48,18 @@
 
 \pagebreak
 \section*{Problem 12}
+\begin{enumerate}[label=(\alph*)]
+    \item
+          \begin{multicols}{2}
+              \includegraphics[width=0.45\textwidth]{xyboxplots.png} \\
+              Looking at the boxplots, it seems like the \(Q_1\) and \(Q_3\)s are very different, implying that the variances (and thus standard deviations) are very different.
+          \end{multicols}
+    \item The generated histogram for x seems to be sufficiently symmetric, so we can assume that the distribution is normal.
+          The generated histogram for y also seems to be sufficiently symmetric, with the majority of the samples occurring near the middle.
+    \item Running a two-sample t-test (assuming common variance) on x and y we get a 95\% confidence interval of [-0.2183217, 5.1516550] with 48 degrees of freedom. Since this interval contains 0, we can say that there is no significant difference between the two samples.
+    \item Running another two-sample t-test (not assuming common variance) on x and y we get a  95\% confidence interval of [0.1874896, 4.7458438] with 36.175 degrees of freedom. Since this interval does not contain 0, we can say there is a significant difference between the two samples.
+\end{enumerate}
+
 \pagebreak
 \section*{Problem 13}
 \begin{enumerate}[label=(\alph*)]
@@ -97,7 +110,7 @@
               Z_{\alpha/2} = Z_{0.025}                     \\
               = \text{invNorm(0.025, 0, 1, RIGHT)} = 1.959 \\
               n \geq \frac{1.959^2 \cdot 25^2}{2.5^2}      \\
-              \geq \ceil{383.76} \rightarrow 384\end{align*}
+              \geq \ceil{383.76} = 384\end{align*}
     \item Creating a 95\% CI with an error at most 0.05 assuming \(0.1 \leq p \leq 0.3\):
           \begin{align*}
               E = 0.05                                         \\
