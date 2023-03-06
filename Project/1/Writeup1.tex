@@ -72,5 +72,31 @@ We can see the histogram of deployments in Figure \ref{fig:histogram}.
 Similarly, the mean of the intervals between deployments for 2010-2015 is 1.328827 vs 1.421543 for 2015-2019.
 We can see the histogram of intervals in Figure \ref{fig:interval}.
 
+\pagebreak
+
+Finally, we conducted two-sample t-tests comparing both intervals, one with variance assumed equal and one without.
+
+\subsection*{\rightline{Assuming Equal Variance}}
+\begin{align*}
+    t              & = -0.39129 \\
+    df             & = 139      \\
+    p\text{-}value & = 0.6962
+\end{align*}
+
+Which generated a p-value of 0.6962, indicating that the two samples are not significantly different.
+More specifically, the 95\% confidence interval for the difference in means is [-0.5612108, 0.3757772].
+
+\subsection*{\rightline{Not Assuming Equal Variance}}
+\begin{align*}
+    t              & = -0.39133 \\
+    df             & = 139      \\
+    p\text{-}value & = 0.6962
+\end{align*}
+
+Which generated a p-value of 0.6962, the same as the previous test.
+Lastly, the 95\% confidence interval for the difference in means is [-0.5611611, 0.3757275].
+
+\section*{Conclusion}
+Going by our t-tests and visually comparing histograms, we can conclude that there is not a significant impact on safety car deployments due to the introduction of the VSC.
 
 \end{document}
