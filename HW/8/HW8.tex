@@ -15,10 +15,11 @@
 
 \begin{document}
 \maketitle
+
+\pagebreak
+
 \section*{Problem 7}
 \begin{enumerate}[label=(\alph*)]
-    % sample mean sales: 43698770
-    % sample dev sales: 40268914
     \item \begin{align*}
               \alpha = 1 - 0.9 & = 0.1  \\
               \alpha/2         & = 0.05
@@ -34,24 +35,27 @@
                       & = 43698770 \pm 10328788.03                         \\
                       & = [33369981.97, 54027558.03]
           \end{align*}
-    \item \includegraphics[width=0.5\textwidth]{histogram.png} \\
-          A rough distribution for this data would be an exponential distribution, as the sales seem to go from high at the beginning and fall off exponentially as time passes.
-          Since the exponential distribution only has one parameter (\(\lambda\)), we know it can be reasonably estimated by its mean (\(\lambda \approx \mu = 43698770\)).
+    \item
+          \setlength{\columnsep}{-1.6in}
+          \begin{multicols}{2}
+              A rough distribution for this data would be an exponential distribution, as the sales seem to go from high at the beginning and fall off exponentially as time passes.
+              Since the exponential distribution only has one parameter (\(\lambda\)), we know it can be reasonably estimated by its mean (\(\lambda \approx \mu = 43698770\)).
+              \columnbreak
+              \rightline{\includegraphics[width=0.3\textwidth]{histogram.png}}
+          \end{multicols}
     \item Our estimation of \(\mu\) is most reliable when the random variables are normally distributed and independent. Since our dataset is clearly not normally distributed, it would require significantly more data samples (\(n \rightarrow 100+\)) to be able to estimate \(\mu\) with a high degree of confidence.
     \item \begin{align*}
               \bar{x}_1 - \bar{x}_1 \pm t_{\alpha/2,n_1+n_2-2} s_p \sqrt{1/n_1 + 1/n_2} \\
               s_p^2 = \frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}
           \end{align*}
           \begin{align*}
-              \bar{x}_1 = 52261232 , n_1 = 22 \\
-              \bar{x}_2 = 34728571 , n_2 = 21 \\
-              s_1                  = 53743145 \\
-              s_2                  = 14403208
+              \bar{x}_1 = 52261232 & , n_1 = 22       \\
+              \bar{x}_2 = 34728571 & , n_2 = 21       \\
+              s_1 = 53743145       & , s_2 = 14403208
           \end{align*}
           \begin{align*}
               s_p^2 & = (\frac{(22 - 1) 53743145^2 + (21 - 1) 14403208^2}{22 + 21 - 2}) \\
                     & = \frac{64803886338136805}{41}                                    \\
-              s_p   & = \sqrt{\frac{64803886338136805}{41}}
           \end{align*}
           \begin{align*}
               52261232 - 34728571 & \pm t_{1-0.90, 22+21-2} \sqrt{\frac{64803886338136805}{41}} \sqrt{1/22 + 1/21} \\
