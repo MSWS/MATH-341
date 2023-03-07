@@ -39,10 +39,27 @@
           Since the exponential distribution only has one parameter (\(\lambda\)), we know it can be reasonably estimated by its mean (\(\lambda \approx \mu = 43698770\)).
     \item Our estimation of \(\mu\) is most reliable when the random variables are normally distributed and independent. Since our dataset is clearly not normally distributed, it would require significantly more data samples (\(n \rightarrow 100+\)) to be able to estimate \(\mu\) with a high degree of confidence.
     \item \begin{align*}
-              \bar{x_1} - \bar{x_2} \pm t_{\alpha/2,n_1+n_2-2} s_p \sqrt{1/n_1 + 1/n_2} \\
+              \bar{x}_1 - \bar{x}_1 \pm t_{\alpha/2,n_1+n_2-2} s_p \sqrt{1/n_1 + 1/n_2} \\
               s_p^2 = \frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}
           \end{align*}
-    \item Requires part d. % Check negatives and positives, if they're both -/+, no significant difference. If one is +/+ and the other is -/- then there is a significant difference.
+          \begin{align*}
+              \bar{x}_1 = 52261232 , n_1 = 22 \\
+              \bar{x}_2 = 34728571 , n_2 = 21 \\
+              s_1                  = 53743145 \\
+              s_2                  = 14403208
+          \end{align*}
+          \begin{align*}
+              s_p^2 & = (\frac{(22 - 1) 53743145^2 + (21 - 1) 14403208^2}{22 + 21 - 2}) \\
+                    & = \frac{64803886338136805}{41}                                    \\
+              s_p   & = \sqrt{\frac{64803886338136805}{41}}
+          \end{align*}
+          \begin{align*}
+              52261232 - 34728571 & \pm t_{1-0.90, 22+21-2} \sqrt{\frac{64803886338136805}{41}} \sqrt{1/22 + 1/21} \\
+              17532661            & \pm 1.682877946 \cdot 1.2128912 \times 10^7                                    \\
+              17532661            & \pm 20411478                                                                   \\
+                                  & [-2878817, 37944139]
+          \end{align*}
+    \item Since our interval contains 0, we can say there is not a significant difference between multi-platform vs. other games.
     \item It seems like the spreads are similar, so we can presumably trust the common variance assumption.
 \end{enumerate}
 
