@@ -59,9 +59,9 @@
               \\ \\
               Going by the given means, we can see that each interval is approximately the inverse of the \# of safety car deployments per half (i.e: interval \(\approx \frac{1}{\# of deployments}\)). This makes sense as the exponential distribution (time between deployments) is the distribution of the time between events, and the Poisson distribution (number of deployments within a timespan), are inversely related.
           \end{multicols}
-    \item This dataset is not necessarily independent or identical. Taking two random samples from any time between the two data groups may result in comparing a near-beginning season race to a near-end season race.
-    \item It can be assumed that both datasets are distributed similarly, and are similar enough to be considered independent.
-    \item In the case of exponential distribution, since the variance is equal to the mean it would not make sense to assume common variance.
+    \item This dataset is not necessarily independent; additionally, the inteval dataset is exponentially distributed, not normally.
+    \item The equation we use to calculate a CI does not assume the dataset is normally distributed. Additionally, since the two event times are disjoin they can be considered independent according to the Poisson distribution.
+    \item In order for us to test the null hypothesis, we are testing that the means of the two are equal, and will use the t test results to determine if there is evidence against it.
     \item t.test() results:\\
           Two Sample t-test
 
